@@ -1,51 +1,17 @@
-import React, { useEffect, useState } from "react";
-import "../Styles/Home.css";
-import axios from "axios";
+import React from 'react'
+import "../styles/Home.css"
+import Contact from "./Contact"
 
 const Home = () => {
- 
-
-  const [pics, setPics] = useState([]);
-
- 
-
-  const fetchPics = async () => {
-    const apiKey = "EbvixQkEPE7kqKI2qHd0ackQCu5roaHHF5jiJvSykgsxxKTcf80F2vKY";
-    const response = await axios.get(
-      "https://api.pexels.com/v1/curated",
-
-      {
-        headers: {
-          Authorization: apiKey,
-        },
-      }
-    );
-
-    console.log(response.data.photos);
-    setPics(response.data.photos);
-  };
-
-  useEffect(() => {
-   
-
-    fetchPics();
-  }, []);
-
   return (
-    <>
-      <h1>Pexels Gallery</h1>
-      <div className="home">
-        {pics.map((pic) => (
-          <div className="card">
-            <img src={pic.src.medium} alt="no" />
+    <div className='home'>
+      
+      <h1>this is under development </h1>
 
-            <h3>Author:</h3>
-            <p>{pic.photographer} </p>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-};
+      <Contact/>
+      
+       </div>
+  )
+}
 
-export default Home;
+export default Home

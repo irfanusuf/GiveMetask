@@ -1,13 +1,9 @@
 import React from 'react'
+import '../styles/Footer.css'
 
 const Footer = () => {
   return (
-    <div>
-
- <p>  COpyright 2024 Allrights REserved </p>
-
-
-    </div>
+    <div className='footer'>All rights reserved 2024</div>
   )
 }
 

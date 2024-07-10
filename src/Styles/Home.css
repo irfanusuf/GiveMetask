@@ -1,23 +1,5 @@
-.home {
-background-color: aquamarine;
-  display: flex;
-  flex-wrap: wrap;
-}
+.home{
 
-h1 {
-  text-align: center;
- background-color: aquamarine;
-  margin: 0;
-  color: aliceblue;
-}
 
-.card {
-background-color: rgb(96, 141, 126);
-  color: aliceblue;
-  margin-left: 30px;
-  margin-top: 30px;
-  border-radius: 10px;
-  padding: 5px;
-  border: 1px solid white;
-  margin-bottom: 20px;
+    min-height: 90vh;
 }

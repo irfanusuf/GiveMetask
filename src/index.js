@@ -1,16 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import './styles/global.css'
 
+const targetDiv = ReactDOM.createRoot(document.getElementById("root"));
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
-  
-    <App />      // app is a function based component 
-
-);
-
-
-
+targetDiv.render(<App />);

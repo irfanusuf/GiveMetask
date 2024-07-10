@@ -1,21 +1,16 @@
 .navbar {
+  background-color: black;
+  display: flex;
 
-    background-color: black;
-    color: antiquewhite;
+  > ul {
     display: flex;
-    >ul{
-        display: flex;
+    > li {
         list-style-type: none;
-        >li{
-            display: flex;
-            margin-left: 20px;
-
-            >a{
-                text-decoration: none;
-                color: aliceblue;
-            }
-            
-
-        }
+      > a {
+        color: aliceblue;
+        margin-left: 20px;
+        text-decoration: none;
+      }
     }
+  }
 }
