@@ -1,8 +1,15 @@
 import React from 'react'
+import '../styles/Contact.scss'
 
-const Contact = () => {
+const Contact = (props) => {
   return (
-    <div>Contact</div>
+    <div className='contact'>
+
+    <h1> For further details contact : {props.y}</h1>
+
+
+
+    </div>
   )
 }
 

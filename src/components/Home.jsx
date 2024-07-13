@@ -1,17 +1,52 @@
-import React from 'react'
-import "../styles/Home.css"
-import Contact from "./Contact"
+import React, { useState } from "react";
+import "../styles/Home.scss";
 
-const Home = () => {
+const Home = (props) => {
+  // front end logic
+  // hooks // useState
+  const [color, setColor] = useState("yellow");
+
+  const [count, setCount] = useState(0);
+
+  const [loading, setLoading] = useState(true);
+
+  const [arr, setArr] = useState([]);
+
+  const [object, setObject] = useState({
+    name: "irfan",
+    address: "hawwal",
+  });
+
+  function handleClick() {
+    setColor("red");
+    setLoading(!loading);
+  }
+
+  function increment() {
+    setCount((x) => x + 1);
+  }
+
+  console.log(loading);
+
   return (
-    <div className='home'>
-      
+    <div className="home">
       <h1>this is under development </h1>
 
-      <Contact/>
-      
-       </div>
-  )
-}
+      <h2> project is under {props.x} </h2>
 
-export default Home
+      <p> {props.x} </p>
+
+      <p> my favorite color is {color}</p>
+
+      <h1>{count} </h1>
+
+      <h1> {object.name} </h1>
+      <h1> {object.address} </h1>
+
+      <button onClick={handleClick}> click me </button>
+      <button onClick={increment}> increment </button>
+    </div>
+  );
+};
+
+export default Home;
