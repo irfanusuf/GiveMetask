@@ -4,11 +4,11 @@ const image =  "something"
 
 const Card = (props) => {
   return (
-    <div className='card'>
+    <div className='card' id= {props.id}>
 
         <img src= {props.src} alt='preview'/>
-        <p>Description</p>
-        <p>Author : {props.auth}</p>
+        <span>{props.id}</span>
+        <span>{props.auth}</span>
 
 
 

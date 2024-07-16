@@ -7,11 +7,10 @@ const Services = () => {
 
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState("hello");
-  const [loading , setLoading] =useState (false)
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async (query) => {
     try {
-   
       const res = await fetch(
         `https://api.pexels.com/v1/search?query=${query}&per_page=80`,
         {
@@ -42,20 +41,27 @@ const Services = () => {
       <h1> My Gallery</h1>
 
       <div className="input">
-
         {" "}
         <input
-         placeholder="Search"
-         value={query} 
-         onChange={(e)=>{setQuery(e.target.value)}}
-         />
-
-         <button onClick={()=>{setLoading(!loading)}}> search </button>
+          placeholder="Search"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            setLoading(!loading);
+          }}
+        >
+          
+          search
+        </button>
       </div>
 
-     <div className="cards">
+      <div className="cards">
         {photos.map((element) => (
-          <Card auth={element.photographer} src={element.src.medium} />
+          <Card id ={element.id} auth={element.photographer} src={element.src.medium} />
         ))}
       </div>
     </div>
