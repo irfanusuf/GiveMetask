@@ -54,14 +54,17 @@ const Services = () => {
             setLoading(!loading);
           }}
         >
-          
           search
         </button>
       </div>
 
       <div className="cards">
         {photos.map((element) => (
-          <Card id ={element.id} auth={element.photographer} src={element.src.medium} />
+          <Card
+            id={element.id}
+            auth={element.photographer}
+            src={element.src.medium}
+          />
         ))}
       </div>
     </div>

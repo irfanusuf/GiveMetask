@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Services from "./components/Services";
 import About from "./components/About";
 import NoPage from "./components/NoPage";
+import Blogs from "./components/Blogs";
 
 const App = () => {
   
@@ -28,6 +29,7 @@ const myName = "interface learning School "
           <Route path="/contact" element= {<Contact  y = {myName}/>} />
           <Route path="/about" element= {<About/>} />
           <Route path="/services" element= {<Services/>} />
+          <Route path="/blogs" element= {<Blogs/>} />
         </Routes>
 
         <Footer />
