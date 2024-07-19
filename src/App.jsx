@@ -9,6 +9,7 @@ import Services from "./components/Services";
 import About from "./components/About";
 import NoPage from "./components/NoPage";
 import Blogs from "./components/Blogs";
+import SignUp from "./components/SignUp";
 
 const App = () => {
   
@@ -30,6 +31,8 @@ const myName = "interface learning School "
           <Route path="/about" element= {<About/>} />
           <Route path="/services" element= {<Services/>} />
           <Route path="/blogs" element= {<Blogs/>} />
+          <Route path="/signup" element= {<SignUp/>} />
+
         </Routes>
 
         <Footer />
