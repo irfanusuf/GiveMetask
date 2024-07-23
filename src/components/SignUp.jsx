@@ -15,6 +15,7 @@ const SignUp = () => {
   // formDataArr.append("password", password);
 
   const baseUrl = "http://localhost:4000";
+  
   const handleSignup = async () => {
     try {
       // xml http post request
@@ -23,7 +24,18 @@ const SignUp = () => {
         email,
         password,
       });
-      toast.success(res.data.message);
+
+      if(res.data.message === "User Saved Succesfully"){
+
+        toast.success("User Saved Succesfully");
+
+      }
+      else{
+               toast.error(res.data.message)
+      }
+ 
+      
+     
     } catch (error) {
       console.log(error.message);
       toast.error(error.message)
