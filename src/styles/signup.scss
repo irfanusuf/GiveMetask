@@ -1,6 +1,61 @@
-.signup{
+.signup {
+  min-height: 90vh;
+  background-color: rgba(139, 199, 179, 0.277);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 
 
-min-height: 90vh;
+  > .main {
 
+    background-color: rgba(250, 235, 215, 0.589);
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.156);
+  
+
+    > h1 {
+        text-align: center;
+        margin: 20px ,0;
+    }
+    > .form {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        margin-top: 40px;
+      > input {
+        border: none;
+        margin: 10px 10px;
+        padding: 7px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+    }
+
+    > .btn {   
+        
+        margin: 10px 30px;
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(73, 18, 222);
+        color: antiquewhite;
+        border-radius: 7px;
+        font-size: 16px;
+        transition: all 0.2s linear;
+        &:hover{
+            background-color: rgba(72, 18, 222, 0.69);
+            transform: scale(1.05);
+        }
+        &:visited{
+            background-color: rgba(218, 13, 13, 0.69);
+        }
+        &:active{
+            background-color: rgba(11, 234, 8, 0.921);
+        }
+
+    }
+  }
 }

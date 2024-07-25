@@ -8,14 +8,13 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   // const formDataArr = new FormData();
   // formDataArr.append("username", username);
   // formDataArr.append("email", email);
   // formDataArr.append("password", password);
 
   const baseUrl = "http://localhost:4000";
-  
+
   const handleSignup = async () => {
     try {
       // xml http post request
@@ -25,20 +24,14 @@ const SignUp = () => {
         password,
       });
 
-      if(res.data.message === "User Saved Succesfully"){
-
-        toast.success("User Saved Succesfully");
-
+      if (res.data.message === "User Saved Succesfully") {
+        toast.success("User Saved Succesfully!");
+      } else {
+        toast.error(res.data.message);
       }
-      else{
-               toast.error(res.data.message)
-      }
- 
-      
-     
     } catch (error) {
       console.log(error.message);
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
@@ -48,40 +41,43 @@ const SignUp = () => {
 
   return (
     <>
-      <ToastContainer />
-      <div className="signup">
-        <h1>Register With Us</h1>
+      <ToastContainer position="top-center" />
+      <div className="signup"> 
+        <div className="main">
+          <h1>Register With Us</h1>
+          <form className="form">
+            <input
+              placeholder="Enter your username "
+              type="text"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+            />
 
-        <form>
-          <input
-            placeholder="Enter your username "
-            type="text"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
+            <input
+              placeholder="Enter your Email "
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
 
-          <input
-            placeholder="Enter your Email "
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+            <input
+              placeholder="Enter your password "
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </form>
 
-          <input
-            placeholder="Enter your password "
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </form>
-
-        <button onClick={handleClick}> Register</button>
+          <button onClick={handleClick} className="btn">
+            Register
+          </button>
+        </div>
       </div>
     </>
   );

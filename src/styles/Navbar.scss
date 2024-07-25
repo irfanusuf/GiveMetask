@@ -1,11 +1,18 @@
 .navbar {
   background-color: black;
   display: flex;
+  color: aliceblue;
+  justify-content: space-between;
+
 
   > ul {
     display: flex;
+
+    margin-left: 10px;
+    margin-right: 30px;
     > li {
         list-style-type: none;
+    
       > a {
         color: aliceblue;
         margin-left: 20px;

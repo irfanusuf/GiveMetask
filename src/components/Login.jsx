@@ -34,43 +34,34 @@ const Login = () => {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <ToastContainer position="top-center" />
 
       <div className="login">
-        <h1> Login to your Account</h1>
+        <div className="main">
+          <h1> Login to your Account</h1>
 
-        <form>
-          <input
-            placeholder="Enter your Email"
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
+          <form className="form">
+            <input
+              placeholder="Enter your Email"
+              type="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
 
-          <input
-            placeholder="Enter your password"
-            type="password"
-            value={password}
-            onChange={(e) => {
-              setPass(e.target.value);
-            }}
-          />
-        </form>
+            <input
+              placeholder="Enter your password"
+              type="password"
+              value={password}
+              onChange={(e) => {
+                setPass(e.target.value);
+              }}
+            />
+          </form>
 
-        <button onClick={handleClick}> Login </button>
+          <button onClick={handleClick} className="btn"> Login </button>
+        </div>
       </div>
     </>
   );
