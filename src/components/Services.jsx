@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Services.scss";
 import Card from "./sharedComponents/Card";
+import Authorized from "../authorization/Authorized";
 
 const Services = () => {
   // frontend logic
+
+  Authorized();
 
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState("hello");
@@ -34,7 +37,7 @@ const Services = () => {
 
   useEffect(() => {
     fetchData(query);
-  }, [loading]);
+  }, [loading ]);
 
   return (
     <div className="services">

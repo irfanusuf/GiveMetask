@@ -11,10 +11,9 @@ const SecureIndex =  () => {
 
   const getUserData = async () => {
     const baseUrl = "http://localhost:4000";
-    const token = localStorage.getItem("token")
-
+    const _id = "66a1e9ffb2b04f9e4af54c16";
     try {
-      const res = await axios.get(`${baseUrl}/user/userDetails/${token}`);
+      const res = await axios.get(`${baseUrl}/user/userDetails/${_id}`);
       setUser(res.data.getUser.username);
       setEmail(res.data.getUser.email);
       toast.success(res.data.message);

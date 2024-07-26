@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "../styles/blogs.scss";
+import IsAuth from "../authorization/IsAuth";
 
 const Blogs = () => {
+
+
+  IsAuth()
+
+
   const [arr, setArr] = useState([]);
   const url =
     "https://newsapi.org/v2/everything?q=india&apiKey=d75ec0f277194bb6aa1b75d1ebeaf603";

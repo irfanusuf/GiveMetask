@@ -15,8 +15,11 @@ import SecureIndex from "./components/SecureIndex";
 import { useEffect, useState } from "react";
 
 const App = () => {
-  const [auth, setAuth] = useState(false);
 
+ // u can do authorization as this or u can just create custom hook by using HOC
+ // function
+
+  const [auth, setAuth] = useState(false);
   const isAuth = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -43,14 +46,18 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/services" element={ <Services/> } />
 
-          <Route path="/services" element={auth ? <Services /> : <NoPage />} />
-          <Route path="/blogs" element={auth ? <Blogs /> : <NoPage />} />
-          <Route
+          <Route path="/blogs" element={ <Blogs /> } />
+
+  
+      {/* conditional rendering using ternary operator */}
+
+           <Route
             path="/secureIndex"
-            element={auth ? <SecureIndex /> : <NoPage />}
+            element={auth ? <SecureIndex /> : <Login/>}
           />
-        </Routes>
+        </Routes> 
 
         <Footer />
       </BrowserRouter>
