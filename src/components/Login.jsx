@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import "../styles/login.scss";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
-
+ const navigate = useNavigate()
   const formData = { email, password };
   const baseUrl = "http://localhost:4000";
 
@@ -16,13 +17,18 @@ const Login = () => {
 
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
+        const { token } = res.data;
+        localStorage.setItem("token", token);
+        navigate("/secureIndex")
+
+
       } else {
         toast.error(res.data.message);
       }
 
-      const { token } = res.data;
+     
 
-      localStorage.setItem("token", token);
+
     } catch (error) {
       console.log(error);
     }

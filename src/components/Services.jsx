@@ -37,7 +37,7 @@ const Services = () => {
 
   useEffect(() => {
     fetchData(query);
-  }, [loading ]);
+  }, [loading , 2000]);
 
   return (
     <div className="services">

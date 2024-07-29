@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../styles/blogs.scss";
-import IsAuth from "../authorization/IsAuth";
+import Authorized from "../authorization/Authorized";
 
 const Blogs = () => {
 
 
-  IsAuth()
+   Authorized()
 
 
   const [arr, setArr] = useState([]);
