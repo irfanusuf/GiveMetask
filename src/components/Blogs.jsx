@@ -46,7 +46,7 @@ const Blogs = () => {
 
             <h1> Latest Blogs</h1>
 
-      {!loading ? arr.slice(0,50).map((article) => (
+      {!loading&&arr ? arr.slice(0,50).map((article) => (
         <div className="blog">
           <h1> {article.title}</h1>
           <img src={article.urlToImage} alt="preview" />
