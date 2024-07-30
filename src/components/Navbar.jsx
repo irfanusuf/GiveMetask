@@ -3,15 +3,15 @@ import "../styles/Navbar.scss";
 import { Link } from "react-router-dom";
 import { CiDatabase } from "react-icons/ci";
 import { IoIosLogIn } from "react-icons/io";
-import logo from "../assets/logo.svg";
-import bg from "../assets/bg.jpg";
+import logo from "../assets/web Title with logo.svg";
+
 
 const Navbar = () => {
   return (
     <>
-      <div className="navbar">
-        <div className="header">
-          <img src={logo} width={200} alt="logo here" />
+     
+        <div className="navbar">
+          <img src={logo} alt="logo here" />
 
           <ul>
             <li>
@@ -31,34 +31,19 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <ul>
-            <li>
-              <Link to="/signup">
-                {" "}
-                Register
-                <CiDatabase
-                  style={{ marginLeft: "10px", fontSize: "20px", color: "red" }}
-                />{" "}
-              </Link>
-            </li>
-            <li>
-              <Link to="/login">
-                Login
-                <IoIosLogIn
-                  style={{
-                    marginLeft: "10px",
-                    fontSize: "20px",
-                    color: "green",
-                  }}
-                />
-              </Link>
-            </li>
-          </ul>
+          <div className="link-btn">
+            <Link to="/signup">
+              Register
+              <CiDatabase/>
+            </Link>
+
+            <Link className="login-link" to="/login">
+              Login
+              <IoIosLogIn/>
+            </Link>
+          </div>
         </div>
-        {/* <div className="hero">
-          <img src={bg} />
-        </div> */}
-      </div>
+  
     </>
   );
 };

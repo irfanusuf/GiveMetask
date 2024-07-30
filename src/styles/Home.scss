@@ -1,5 +1,32 @@
-.home{
 
+$main-Color : #F08829;
+.home {
+  min-height: 90vh;
 
-    min-height: 90vh;
+  > .hero {
+    background-color: black;
+    background-image: url(../assets/hero.svg);
+    background-size: cover;
+    height: 890px;
+    display: flex;
+
+    >.hero-left{
+        color: aliceblue;
+        padding-top: 300px ;
+        padding-left: 50px;
+        
+        h1 ,h2 {
+            font-size: 72px;
+            margin: 0;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        h2{
+            color: $main-Color;
+        }
+
+    }
+  }
 }

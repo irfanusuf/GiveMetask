@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import "../styles/Services.scss";
 import Card from "./sharedComponents/Card";
 import Authorized from "../authorization/Authorized";
@@ -9,8 +9,10 @@ const Services = () => {
   Authorized();
 
   const [photos, setPhotos] = useState([]);
-  const [query, setQuery] = useState("hello");
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
+  const [auth, setAuth] = useState(true);
+  const [istransit, setTransition] = useTransition();
 
   const fetchData = async (query) => {
     try {
@@ -36,8 +38,20 @@ const Services = () => {
   };
 
   useEffect(() => {
-    fetchData(query);
-  }, [loading , 2000]);
+    if (auth) {
+      fetchData("nature").then(() => {
+        setAuth(false);
+      });
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    if (loading) {
+      fetchData(query).then(() => {
+        setLoading(false);
+      });
+    }
+  }, [loading, query]);
 
   return (
     <div className="services">
@@ -49,12 +63,14 @@ const Services = () => {
           placeholder="Search"
           value={query}
           onChange={(e) => {
-            setQuery(e.target.value);
+            setTransition(() => {
+              setQuery(e.target.value);
+            });
           }}
         />
         <button
           onClick={() => {
-            setLoading(!loading);
+            setLoading(true);
           }}
         >
           search

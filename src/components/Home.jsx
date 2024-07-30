@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Home.scss";
-
-
+import hero from "../assets/hero.svg";
 
 const Home = () => {
   return (
     <div className="home">
+      <div className="hero">
+        <div className="hero-left">
+    
 
+          <h1>Transforming Ambitions </h1> 
+          <h2>Into Achievements, </h2>
+          <h1>With Cutting-Edge IT Training</h1>
 
+        </div>
+        <div className="hero-right">
 
+        </div>
 
-
-
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
-
-
-
-
+export default Home;
 
 // const Home = (props) => {
 //   // front end logic
