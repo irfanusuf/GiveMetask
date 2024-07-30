@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/blogs.scss";
 import Authorized from "../authorization/Authorized";
 import Loading from "./Loading";
-import Home from "./Home";
+import Home from "./sharedComponents/Home";
 
 const Blogs = () => {
 
@@ -13,7 +13,7 @@ const Blogs = () => {
   const [arr, setArr] = useState([]);
   const [loading , setLoading] =useState(false)
   const url =
-    "https://newsapi.org/v2/everything?q=india&apiKey=d75ec0f277194bb6aa1b75d1ebeaf603";
+    "https://newsapi.org/v2/everything?q=reactjs&from=2024-06-30&sortBy=publishedAt&apiKey=d75ec0f277194bb6aa1b75d1ebeaf603";
 
   const fetchData = async () => {
     try {
@@ -44,7 +44,7 @@ const Blogs = () => {
    <Home/>
     <div className="blogs">
 
-            <h1> Latest News</h1>
+            <h1> Latest Blogs</h1>
 
       {!loading ? arr.slice(0,50).map((article) => (
         <div className="blog">

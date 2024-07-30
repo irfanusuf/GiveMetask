@@ -1,9 +1,17 @@
 import React from 'react'
 import '../styles/About.scss'
+import Home from './sharedComponents/Home'
 
 const About = () => {
   return (
-    <div className='about'>About</div>
+    <>
+    <Home/>
+    <div className='about'>
+    <h1>About</h1>
+    </div>
+
+    
+    </>
   )
 }
 

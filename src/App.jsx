@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./components/sharedComponents/Home";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
@@ -14,6 +14,7 @@ import NoPage from "./components/NoPage";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Loading from "./components/Loading";
+import Index from "./components/Index";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() => delay(import("./components/SecureIndex")));
@@ -54,7 +55,7 @@ const App = () => {
         <Routes>
           {/* unspecified path */}
           <Route path="*" element={<NoPage />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Index/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useTransition } from "react";
 import "../styles/Services.scss";
 import Card from "./sharedComponents/Card";
 import Authorized from "../authorization/Authorized";
+import Home from "./sharedComponents/Home";
 
 const Services = () => {
   // frontend logic
@@ -54,6 +55,8 @@ const Services = () => {
   }, [loading, query]);
 
   return (
+    <>
+    <Home/>
     <div className="services">
       <h1> My Gallery</h1>
 
@@ -87,6 +90,7 @@ const Services = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

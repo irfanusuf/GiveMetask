@@ -1,14 +1,12 @@
 import React from "react";
-import "../styles/Home.scss";
-import hero from "../assets/hero.svg";
+import "../../styles/Home.scss";
+
 
 const Home = () => {
   return (
     <div className="home">
       <div className="hero">
         <div className="hero-left">
-    
-
           <h1>Transforming Ambitions </h1> 
           <h2>Into Achievements, </h2>
           <h1>With Cutting-Edge IT Training</h1>

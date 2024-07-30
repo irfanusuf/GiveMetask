@@ -7,18 +7,17 @@ $main-Color : #F08829;
     background-color: black;
     background-image: url(../assets/hero.svg);
     background-size: cover;
-    height: 890px;
+    min-height: 700px;
     display: flex;
 
     >.hero-left{
         color: aliceblue;
-        padding-top: 300px ;
+        padding-top: 200px ;
         padding-left: 50px;
         
         h1 ,h2 {
             font-size: 72px;
             margin: 0;
-            letter-spacing: 2px;
             margin: 20px 0;
             font-weight: 700;
         }
