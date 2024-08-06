@@ -11,29 +11,31 @@ const Authorized = () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        return navigate("/login");
+        navigate("/login");
+        return false;
       }
 
       if (token) {
         const baseUrl = `http://localhost:4000/token/verify/${token}`;
         const res = await axios.get(baseUrl);
-        
+
         if (res.data.message === "tokenNotVerfied") {
-          return navigate("/login");
+          navigate("/login");
+          return false;
         } else if (res.data.message === "verified") {
           const id = res.data.decode._id;
           localStorage.setItem("id", id);
+          return true;
         }
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something Went Wrong!");
+      navigate("/login");
+      return false;
     }
   };
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  return checkAuth;
 };
 
 export default Authorized;

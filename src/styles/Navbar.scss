@@ -1,19 +1,22 @@
-
-$main-Color : #F08829;
-
+@import "./global.scss";
 
   .navbar {
     background-image:url(../assets/hero.svg);
     display: flex;
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 1;
     justify-content: space-between;
     align-items: center;
-    color: aliceblue;
-    height: 15vh;
+    color: $white;
+    height: 10vh;
+
+
     > img {
       margin-left: 20px;
-      width: 350px;
+      width: 250px;
+      padding-top: 5px;
      
     }
     > ul {
@@ -21,14 +24,14 @@ $main-Color : #F08829;
       > li {
         list-style-type: none;
         > a {
-          color: aliceblue;
+          color: $white;
           margin-right: 60px;
           text-decoration: none;
           letter-spacing: 1px;
           transition: all 0.3s ease-in;
           font-size: large;
           &:hover{
-            color: $main-Color;
+            color: $orange;
             font-size: larger;
           }
         }
@@ -37,20 +40,27 @@ $main-Color : #F08829;
 
     >.link-btn {
       display: flex;
-      padding-bottom: 40px;
+      
       > a {
-        background-color: $main-Color ;
-        padding: 10px 20px;
-        border-radius: 20px;
+        background-color: $orange;
+        padding: 10px 25px;
+        border-radius: 25px;
         text-decoration: none;
-        color: aliceblue;
+        color: $white;
         margin-right: 10px;
-        font-size: 20px;
+        display: flex;
+        transition: all 0.1s ease-in;
+        &:hover{
+          opacity: 0.7;
+        }
+        &:active{
+          background-color:$orange-shade ;
+        }
       }
 
       >.login-link{
-        color: wheat;
-        background-color: grey;
+        color: $white;
+        background-color: $grey;
         margin-right: 30px;
       }
     }

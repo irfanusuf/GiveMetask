@@ -2,14 +2,16 @@ import React from "react";
 import "../../styles/Home.scss";
 
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div className="home">
       <div className="hero">
+   
         <div className="hero-left">
-          <h1>Transforming Ambitions </h1> 
-          <h2>Into Achievements, </h2>
-          <h1>With Cutting-Edge IT Training</h1>
+          <h1> {props.heading} </h1> 
+          <h2> {props.subheading} </h2>
+          <h1>{props.para}</h1>
+          <p>{props.smallpara}</p>
 
         </div>
         <div className="hero-right">

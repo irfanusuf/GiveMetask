@@ -1,38 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/login.scss";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
- const navigate = useNavigate()
+  const [loading , setLoading ] =useState(false)
+
   const formData = { email, password };
   const baseUrl = "http://localhost:4000";
 
   const LoginHandler = async () => {
     try {
+      setLoading(true)
       const res = await axios.post(`${baseUrl}/user/login`, formData);
 
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
         const { token } = res.data;
         localStorage.setItem("token", token);
-        navigate("/secureIndex")
-
-
+        navigate("/secureIndex");
       } else {
         toast.error(res.data.message);
       }
-
-     
-
-
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
+    finally{
+      setLoading(false)
+    }
   };
+  useEffect(() => {
+    document.title = "ALGO ACADEMY | LOGIN";
+  }, []);
 
   function handleClick() {
     LoginHandler();
@@ -66,7 +70,9 @@ const Login = () => {
             />
           </form>
 
-          <button onClick={handleClick} className="btn"> Login </button>
+          <button onClick={handleClick} className="btn">
+          {loading ? "Logging In ...." :  "Login" }
+          </button>
         </div>
       </div>
     </>

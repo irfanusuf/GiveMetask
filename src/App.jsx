@@ -1,27 +1,25 @@
 // from node modules
-
 import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
 import Navbar from "./components/Navbar";
-import Home from "./components/sharedComponents/Home";
 import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import NoPage from "./components/NoPage";
-
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
-import Loading from "./components/Loading";
+import Loading from "./components/sharedComponents/Loading";
 import Index from "./components/Index";
+import PersonalBlogs from "./components/PersonalBlogs";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() => delay(import("./components/SecureIndex")));
 const Services = React.lazy(() => delay(import("./components/Services")));
 const Blogs = React.lazy(() => delay(import("./components/Blogs")));
 
-// delay is an async function which will delay importing of file by 2 seconds
+// delay is an async function which will delay importing of file by 1 seconds
 
 async function delay(promise) {
   await new Promise((resolve) => {
@@ -60,6 +58,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/user/blogs" element={<PersonalBlogs />} />
           <Route
             path="/services"
             element={
@@ -72,8 +71,7 @@ const App = () => {
             path="/blogs"
             element={
               <Suspense fallback={<Loading />}>
-                {" "}
-                <Blogs />{" "}
+                <Blogs />
               </Suspense>
             }
           />

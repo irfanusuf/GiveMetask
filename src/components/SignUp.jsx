@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/signup.scss";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -7,17 +7,23 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // const formDataArr = new FormData();
   // formDataArr.append("username", username);
   // formDataArr.append("email", email);
   // formDataArr.append("password", password);
 
+  useEffect(() => {
+    document.title = "ALGO ACADEMY | REGISTER";
+  }, []);
+
   const baseUrl = "http://localhost:4000";
 
   const handleSignup = async () => {
     try {
       // xml http post request
+      setLoading(true);
       const res = await axios.post(`${baseUrl}/user/signup`, {
         username,
         email,
@@ -30,8 +36,11 @@ const SignUp = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
+      setLoading(false);
       console.log(error.message);
       toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +51,7 @@ const SignUp = () => {
   return (
     <>
       <ToastContainer position="top-center" />
-      <div className="signup"> 
+      <div className="signup">
         <div className="main">
           <h1>Register With Us</h1>
           <form className="form">
@@ -75,7 +84,7 @@ const SignUp = () => {
           </form>
 
           <button onClick={handleClick} className="btn">
-            Register
+            {loading ? "Registering...." : "Register"}
           </button>
         </div>
       </div>

@@ -7,12 +7,12 @@ import Home from "./sharedComponents/Home";
 const Services = () => {
   // frontend logic
 
-  Authorized();
+  const checkAuth = Authorized()
 
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = useState(true);
+  const [isAuthorised, setIsAuthorised] = useState(false);
   const [istransit, setTransition] = useTransition();
 
   const fetchData = async (query) => {
@@ -27,24 +27,31 @@ const Services = () => {
           },
         }
       );
-
       const data = await res.json();
-
       setPhotos(data.photos);
-
       console.log(data.photos);
     } catch (error) {
       console.log(error);
     }
   };
 
+
+
   useEffect(() => {
-    if (auth) {
-      fetchData("nature").then(() => {
-        setAuth(false);
-      });
+    (async () => {
+      const isAuth = await checkAuth();
+      console.log(isAuth)
+      setIsAuthorised(isAuth)
+      
+    })();
+    document.title = "ALGO ACADEMY | SERVICES";
+  }, []);
+
+  useEffect(() => {
+    if (isAuthorised) {
+      fetchData("nature");
     }
-  }, [auth]);
+  }, [isAuthorised]);
 
   useEffect(() => {
     if (loading) {
@@ -56,40 +63,47 @@ const Services = () => {
 
   return (
     <>
-    <Home/>
-    <div className="services">
-      <h1> My Gallery</h1>
+      <Home
+        subheading={"Our services"}
+        smallpara={
+          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ratione. Sunt error voluptatem, iure quo, at ipsam alias quisquam fuga ex pariatur commodi corporis eos dignissimos. Natus temporibus earum expedita."
+        }
+      />
 
-      <div className="input">
-        {" "}
-        <input
-          placeholder="Search"
-          value={query}
-          onChange={(e) => {
-            setTransition(() => {
-              setQuery(e.target.value);
-            });
-          }}
-        />
-        <button
-          onClick={() => {
-            setLoading(true);
-          }}
-        >
-          search
-        </button>
-      </div>
+      <div className="services">
+        <h1> My Gallery</h1>
 
-      <div className="cards">
-        {photos.map((element) => (
-          <Card
-            id={element.id}
-            auth={element.photographer}
-            src={element.src.medium}
+        <div className="input">
+          <input
+            placeholder="Search"
+            value={query}
+            onChange={(e) => {
+              setTransition(() => {
+                setQuery(e.target.value);
+              });
+            }}
           />
-        ))}
+
+          <button
+            onClick={() => {
+              setLoading(true);
+            }}
+          >
+            {loading ? "loading......" : "search"}
+          </button>
+        </div>
+
+        <div className="cards">
+          {photos &&
+            photos.map((element) => (
+              <Card
+                id={element.id}
+                auth={element.photographer}
+                src={element.src.medium}
+              />
+            ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };
