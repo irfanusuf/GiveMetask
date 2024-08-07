@@ -10,17 +10,20 @@ const App = () => {
 
 
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Navbar />
+        <div className="main">
         <Routes>
+          <Route path="*" element={"No page Found ! | 404"} />
           <Route path="/" element={<Home  />} />
           <Route path="/blogs" element={<Blogs />} />
 
         </Routes>
+        </div>
         <Footer />
-      </BrowserRouter>
-    </div>
+      </BrowserRouter> 
+    </>
   );
 };
 

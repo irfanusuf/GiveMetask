@@ -5,21 +5,18 @@ import axios from "axios";
 
 function Home() {
   const [content, setContent] = useState("");
-  const [title, setTitle] = useState("");
+
 
   const handleEditorChange = (event, editor) => {
     const data = editor.getData();
     setContent(data);
   };
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
+
 
   const handleSubmit = () => {
     axios
       .post("http://localhost:5000/api/blogs", {
-        title: title,
         content: content,
       })
       .then((response) => {
@@ -72,16 +69,10 @@ function Home() {
   }
 
   return (
-    <div className="main">
+   
       <div className="home">
         <h2>Write a Blog</h2>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={handleTitleChange}
-          style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
-        />
+      
         <CKEditor
           editor={ClassicEditor}
           config={{
@@ -109,7 +100,7 @@ function Home() {
           Save Blog
         </button>
       </div>
-    </div>
+
   );
 }
 

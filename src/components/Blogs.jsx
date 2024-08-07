@@ -20,21 +20,20 @@ function Blogs() {
   }, []);
 
   return (
-    <div className="main">
+ 
       <div className="blogs">
-        <h1>All Blogs</h1>
+        <h1>Daily Blogs</h1>
         {blogs.length === 0 ? (
           <p>No blogs available.</p>
         ) : (
           blogs.map((blog) => (
             <div key={blog._id} className="ck-content">
-              <h3>{blog.title}</h3>
               <div dangerouslySetInnerHTML={{ __html: blog.content }} />
             </div>
           ))
         )}
       </div>
-    </div>
+   
   );
 }
 
