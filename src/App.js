@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
-import About from "./components/About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Blogs from "./components/Blogs";
 
 const App = () => {
 
@@ -15,7 +15,8 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home  />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/blogs" element={<Blogs />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>

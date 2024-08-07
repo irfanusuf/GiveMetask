@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.main{
+  min-height: 90vh;
+}
+
+.home {
+
+  width: 60%;
+  margin: auto;
+}
+
+.blogs{
+  width: 60%;
+  margin: auto;
+
+  >h1{
+    text-align: center;
+  }
+}
