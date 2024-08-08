@@ -20,7 +20,9 @@ const Login = () => {
 
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
+
         const { token } = res.data;
+        
         localStorage.setItem("token", token);
         navigate("/secureIndex");
       } else {

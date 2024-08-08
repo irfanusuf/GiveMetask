@@ -13,6 +13,7 @@ import Login from "./components/Login";
 import Loading from "./components/sharedComponents/Loading";
 import Index from "./components/Index";
 import PersonalBlogs from "./components/PersonalBlogs";
+import WriteBlogs from "./components/WriteBlogs";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() => delay(import("./components/SecureIndex")));
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/user/blogs" element={<PersonalBlogs />} />
+          <Route path="/user/post" element={<WriteBlogs />} />
           <Route
             path="/services"
             element={

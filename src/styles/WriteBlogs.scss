@@ -1,0 +1,29 @@
+.create-blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+>form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+
+
+    >input ,textarea {
+        width: 600px;
+        margin-bottom: 20px;
+        padding: 5px 20px;
+        font-size: 22px;
+
+    }
+ 
+
+}
+
+
+
+
+}
