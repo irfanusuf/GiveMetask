@@ -1,12 +1,39 @@
-import React from "react";
-import "../styles/Navbar.scss";
+import React, { useEffect, useState } from "react";
+import "../../styles/Navbar.scss";
 import { Link } from "react-router-dom";
 import { CiDatabase } from "react-icons/ci";
 import { IoIosLogIn } from "react-icons/io";
-import logo from "../assets/web Title with logo.svg";
+import logo from "../../assets/web Title with logo.svg";
+import axios from "axios";
+import { FaUserTie } from "react-icons/fa6";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 
-const Navbar = () => {
+
+
+const Navbar = (props) => {
+  
+  const [user, setUser] = useState("");
+  
+  const getUserData = async () => {
+    try {
+      
+      const baseUrl = "http://localhost:4000";
+      const token = localStorage.getItem("token")
+      const res = await axios.get(`${baseUrl}/user/getUser/${token}`);
+      
+      setUser(res.data.email);
+ 
+    } catch (error) {
+    
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [props.change]);
+
   return (
     <>
      
@@ -31,7 +58,16 @@ const Navbar = () => {
             </li>
           </ul>
 
+
+          <div className="user">
+          <span><FaUserTie/></span>  
+            <p>{user}</p>
+           <div><IoIosArrowDropdown/></div> 
+            
+          </div>
+
           <div className="link-btn">
+        
             <Link to="/signup">
               Register
               <CiDatabase/>
@@ -42,6 +78,8 @@ const Navbar = () => {
               <IoIosLogIn/>
             </Link>
           </div>
+
+
         </div>
   
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Home from "./sharedComponents/Home";
-import "../styles/p-blogs.scss";
+import "../styles/blogs.scss";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import Loading from "./sharedComponents/Loading";
@@ -14,8 +14,9 @@ const PersonalBlogs = () => {
     try {
       setLoading(true);
       const baseUrl = "http://localhost:4000";
-      const token = localStorage.getItem("token");
-      const url = `${baseUrl}/post/getAll/${token}`;
+     
+      const url = `${baseUrl}/post/getAll`;
+      
       const res = await axios.get(url);
     
 
@@ -48,8 +49,9 @@ const PersonalBlogs = () => {
           "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ratione. Sunt error voluptatem, iure quo, at ipsam alias quisquam fuga ex pariatur commodi corporis eos dignissimos. Natus temporibus earum expedita."
         }
       />
+        
       <div className="blogs">
-        <h1> Personal Blogs</h1>
+      <h1> Personal Blogs</h1>
 
         {posts &&
           posts.map((post) => (
@@ -57,7 +59,7 @@ const PersonalBlogs = () => {
               <h1>{post.title}</h1>
               <img src={post.imageUrl} alt="no-image" />
               <p>{post.author}</p>
-              <p>{post.description ? post.description : "No description " }</p>
+              <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
           ))}
       </div>

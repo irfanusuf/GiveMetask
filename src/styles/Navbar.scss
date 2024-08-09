@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
     color: $white;
-    height: 10vh;
+    height: 80px;
 
 
     > img {
@@ -36,6 +36,36 @@
           }
         }
       }
+    }
+
+
+    >.user{
+      display: flex;
+
+      >p{
+        margin: 0;
+        margin-left: 10px;
+        padding-top: 15px;
+        font-family: cursive;
+       font-size: 20px;
+       font-style: italic;
+      }
+      >span{
+        font-size: 32px;
+        width: 45px;
+        height: 45px;
+        border: 1px solid wheat;
+        border-radius: 40px ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      >div{
+        padding-top: 18px;
+        font-size: 25px;
+        margin-left: 10px;
+      }
+
     }
 
     >.link-btn {

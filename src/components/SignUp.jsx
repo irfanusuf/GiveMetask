@@ -52,7 +52,7 @@ const SignUp = () => {
     <>
       <ToastContainer position="top-center" />
       <div className="signup">
-        <div className="main">
+        <div className="container">
           <h1>Register With Us</h1>
           <form className="form">
             <input

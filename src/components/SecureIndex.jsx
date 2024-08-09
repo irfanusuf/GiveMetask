@@ -7,16 +7,16 @@ import Authorized from "../authorization/Authorized";
 const SecureIndex = () => {
   Authorized();
 
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("dummy");
   const [email, setEmail] = useState("");
   const baseUrl = "http://localhost:4000";
-  const _id = localStorage.getItem("id");
+  const token = localStorage.getItem("token")
 
-  const getUserData = async (_id) => {
+  const getUserData = async (token) => {
     try {
-      const res = await axios.get(`${baseUrl}/user/userDetails/${_id}`);
-      setUser(res.data.getUser.username);
-      setEmail(res.data.getUser.email);
+      const res = await axios.get(`${baseUrl}/user/getUser/${token}`);
+     
+      setEmail(res.data.email);
     } catch (error) {
       toast.error(error.message);
       console.log(error);
@@ -24,8 +24,8 @@ const SecureIndex = () => {
   };
 
   useEffect(() => {
-    getUserData(_id);
-  }, [_id]);
+    getUserData(token);
+  }, [token]);
 
   return (
     <>

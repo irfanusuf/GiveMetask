@@ -1,10 +1,10 @@
 // from node modules
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/sharedComponents/Navbar";
+import Footer from "./components/sharedComponents/Footer";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import NoPage from "./components/NoPage";
@@ -47,48 +47,57 @@ const App = () => {
   //   isAuth();
   // }, []);
 
+  const [change, setChange] = useState(false);
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          {/* unspecified path */}
-          <Route path="*" element={<NoPage />} />
-          <Route path="/" element={<Index/>} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/user/blogs" element={<PersonalBlogs />} />
-          <Route path="/user/post" element={<WriteBlogs />} />
-          <Route
-            path="/services"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Services />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/blogs"
-            element={
-              <Suspense fallback={<Loading />}>
-                <Blogs />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/secureIndex"
-            element={
-              <Suspense fallback={<Loading />}>
-                <SecureIndex />
-              </Suspense>
-            }
-          />
+        <Navbar change={change} />
+        <div className="main">
+          <Routes>
+            {/* unspecified path */}
+            <Route path="*" element={<NoPage />} />
+            <Route path="/" element={<Index />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/login"
+              element={<Login setChange={setChange} change={change} />}
+            />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
 
-          {/* conditional rendering using ternary operator */}
-          {/* <Route path="/secureIndex" element={auth ? <SecureIndex/>:<Login/>}/> */}
-        </Routes>
+            <Route path="/user/blogs" element={<PersonalBlogs />} />
+            
+            <Route path="/user/post" element={<WriteBlogs />} />
+            <Route
+              path="/services"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Services />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/blogs"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <Blogs />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/secureIndex"
+              element={
+                <Suspense fallback={<Loading />}>
+                  <SecureIndex />
+                </Suspense>
+              }
+            />
+
+            {/* conditional rendering using ternary operator */}
+            {/* <Route path="/secureIndex" element={auth ? <SecureIndex/>:<Login/>}/> */}
+          </Routes>
+        </div>
 
         <Footer />
       </BrowserRouter>

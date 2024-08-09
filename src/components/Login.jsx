@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPass] = useState("");
@@ -20,10 +20,11 @@ const Login = () => {
 
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
-
         const { token } = res.data;
-        
         localStorage.setItem("token", token);
+
+        props.setChange(!props.change)
+        
         navigate("/secureIndex");
       } else {
         toast.error(res.data.message);
@@ -49,7 +50,7 @@ const Login = () => {
       <ToastContainer position="top-center" />
 
       <div className="login">
-        <div className="main">
+        <div className="container">
           <h1> Login to your Account</h1>
 
           <form className="form">
