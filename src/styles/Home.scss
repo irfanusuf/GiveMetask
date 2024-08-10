@@ -77,7 +77,8 @@
         p {
           padding-top: 50px;
           text-align: center;
-          width: 400px;
+          width: 100%;
+          
         }
       }
     }
@@ -90,17 +91,16 @@
   .home {
     > .hero {
       > .hero-left {
+        width: 400px;
     
         h1,
-        h2 {
+        h2 ,h3{
           font-size: calc(0.75rem + 4vw) ;
          
         }
   
 
-        p {
-          width: 320px;
-        }
+      
       }
     }
   }

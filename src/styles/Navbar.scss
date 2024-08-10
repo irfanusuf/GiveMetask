@@ -19,7 +19,7 @@
 
     > img {
     
-      width: 250px;
+      width: 15%;
       padding-top: 5px;
      
     }
@@ -137,6 +137,9 @@
 
   .navbar{
 
+
+
+
     >.menu{
       display: block;
       padding-top: 10px;
@@ -175,10 +178,10 @@
         }
       }
     }
-    
+
     > img {
     
-      width: 180px;
+      width: 25%;
       padding-top: 5px;
      
     }
@@ -186,6 +189,28 @@
     >.ul{
       display: none;
     }
+  }
+  
+}
+
+
+
+@media screen and (max-width : 420px) {
+
+  .navbar{
+
+
+
+
+ 
+    > img {
+    
+      width: 30%;
+      padding-top: 5px;
+     
+    }
+
+  
   }
   
 }
