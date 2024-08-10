@@ -7,20 +7,26 @@
     top: 0;
     width: 100%;
     z-index: 1;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     color: $white;
     height: 80px;
+    padding-top: 10px ;
 
+    >.menu{  
+      display: none;
+    }
 
     > img {
-      margin-left: 20px;
+    
       width: 250px;
       padding-top: 5px;
      
     }
-    > ul {
+
+    > .ul {
       display: flex;
+      padding: 0;
       > li {
         list-style-type: none;
         > a {
@@ -38,17 +44,18 @@
       }
     }
 
-
     >.user{
       display: flex;
+      padding-left: 15%;
+      margin-right: 10px;
 
       >p{
         margin: 0;
         margin-left: 10px;
         padding-top: 15px;
         font-family: cursive;
-       font-size: 20px;
-       font-style: italic;
+        font-size: 16px;
+        font-style: italic;
       }
       >span{
         font-size: 32px;
@@ -61,7 +68,7 @@
         align-items: center;
       }
       >div{
-        padding-top: 18px;
+        padding-top: 15px;
         font-size: 25px;
         margin-left: 10px;
       }
@@ -94,5 +101,89 @@
         margin-right: 30px;
       }
     }
+
+    >.triple-dot{
+      padding-top: 10px;
+      font-size: 24px; 
+    }
   }
+
+
+.display-none {
+  display: none;
+}
+
+@media only screen and (max-width : 1400px) {
+
+  .navbar {
+    justify-content: space-around;
+
+    >.ul {
+      >li {
+        a {
+          margin-right: 30px;
+        }
+      }
+    }
+    >.user {
+      display: none;
+    }
+    >.link-btn {
+      display: none;
+    }
+  }
+}
+
+
+
+@media screen and (max-width : 768px) {
+
+  .navbar{
+
+    >.menu{
+      padding-top: 10px;
+      font-size: 32px;
+      display: block;
+      position: relative;
+
+      >.drop-down{
+        position: fixed;
+        background-color: rgb(240, 248, 255);
+        border-radius: 3px;
+        height: 100%;
+        left: 0;
+        top: 0;
+        width: 250px;
+        z-index: 1;
+        
+        >.close-btn{
+          padding-left: 200px;
+          padding-top: 12px;
+          color: black;
+        }
+      
+        >ul{
+          margin-left: 10px;
+          padding-top: 50px;
+        
+          >li{
+            list-style-type: none;
+            margin-bottom: 30px;
+            >a{
+                color: rgba(0, 0, 0, 0.705);
+                text-decoration: none; 
+                font-size: 16px;  
+            }
+          }
+        }
+      }
+    }
+
+    >.ul{
+      display: none;
+    }
+  }
+  
+}
+
 

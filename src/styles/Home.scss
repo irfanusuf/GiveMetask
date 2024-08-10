@@ -1,9 +1,7 @@
-
 @import "./global.scss";
 
 .home {
   min-height: 700px;
-
 
   > .hero {
     background-color: $black;
@@ -12,27 +10,119 @@
     min-height: 700px;
     display: flex;
 
-    >.hero-left{
-        color: $white;
-        padding-top: 200px ;
-        padding-left: 50px;
-        
-        h1 ,h2 {
-          
-            font-size: 72px;
-            margin: 0;
-            margin: 20px 0;
-            font-weight: 700;
+    > .hero-left {
+      color: $white;
+      padding-top: 100px;
+      padding-left: 4%;
+      padding-right: 4%;
+
+      h1,
+      h2 {
+        font-size: 72px;
+        margin: 0;
+        margin: 20px 0;
+        font-weight: 700;
+      }
+
+      h2 {
+        color: $orange;
+      }
+
+      p {
+        margin-top: 30px;
+        font-size: 16px;
+        width: 600px;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        color: rgba(209, 195, 195, 0.932);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .home {
+    > .hero {
+      background-image: url(../assets/hero.svg);
+
+      > .hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 80px;
+        width: 600px;
+
+        h1,
+        h2 {
+          font-size: 38px;
+          margin: 10px 0;
         }
 
-        h2{
-           color: $orange;
+        h2 {
+          color: $orange;
         }
 
-        p{
-          width: 500px;
+        p {
+          text-align: center;
+          width: 400px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home {
+    > .hero {
+      background-image: url(../assets/hero.svg);
+
+      > .hero-left {
+        padding-top: 80px;
+        width: 500px;
+
+        h1,
+        h2 {
+          text-align: center;
+          font-size: 34px;
+          margin: 10px 0;
+          width: 400px;
         }
 
+        h2 {
+          color: $orange;
+        }
+
+        p {
+          width: 400px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .home {
+    > .hero {
+      > .hero-left {
+        padding-top: 100px;
+        width: 350px;
+
+        h1,
+        h2 {
+          font-size: 30px;
+          width: 350px;
+        }
+
+        h2 {
+          color: $orange;
+        }
+
+        p {
+          width: 320px;
+        }
+      }
     }
   }
 }

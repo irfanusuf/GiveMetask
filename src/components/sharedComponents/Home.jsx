@@ -14,9 +14,9 @@ const Home = (props) => {
           <p>{props.smallpara}</p>
 
         </div>
-        <div className="hero-right">
+        {/* <div className="hero-right">
 
-        </div>
+        </div> */}
 
       </div>
     </div>

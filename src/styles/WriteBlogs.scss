@@ -2,32 +2,32 @@
 
 .create-blog{
   
-    width: 80%;
+    width: 60%;
     margin: auto;
 
 
 >form{
    
     >input {
-        width: 600px;
+        width: 500px;
         margin-bottom: 20px;
         padding: 5px 20px;
         font-size: 22px;
 
     }
 
-    >button{
-        background-color: orange;
-        padding: 10px 30px;
-        border: none;
-        border-radius: 20px;
-        margin-top: 20px;
-        color: rgb(253, 253, 253);
-        font-size: 20px;
+}
 
 
-    }
- 
+>button{
+    background-color: orange;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    color: rgb(253, 253, 253);
+    font-size: 20px;
+
 
 }
 

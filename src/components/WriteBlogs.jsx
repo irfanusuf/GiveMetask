@@ -11,20 +11,20 @@ const WriteBlogs = () => {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
 
-//   const formData = { title, image, description };
+  // const formData = { title, image, description };
 
-const formData = new FormData()
+  // above  formData will not work becoz we are sending .jpg/.png in formData 
 
-formData.append("title" , title)
-formData.append("image" , image)
-formData.append("content" , content)
+  const formData = new FormData();
 
-const handleEditorChange = (event , editor) => {
-  console.log(event)
-  const data = editor.getData();
-  setContent(data);
-};
+  formData.append("title", title);
+  formData.append("image", image);
+  formData.append("content", content);
 
+  const handleEditorChange = (event, editor) => {
+    const data = editor.getData();
+    setContent(data);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,29 +34,23 @@ const handleEditorChange = (event , editor) => {
       const token = localStorage.getItem("token");
       const url = `${baseUrl}/post/createPost/${token}`;
       const res = await axios.post(url, formData);
-      toast.success("hogaya")
-      console.log(res)
+      toast.success(res.data.message);
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
   };
 
-  
   function customPlugin(editor) {
     editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-      return new MyUploadAdapter(loader);
+      return uploadFunction(loader);
     };
   }
 
-
-  class MyUploadAdapter {
-    constructor(loader) {
-      this.loader = loader;
-    }
-
-    async upload() {
+  function uploadFunction(loader) {
+    const upload = async () => {
       try {
-        const file = await this.loader.file;
+        const file = await loader.file;
         const formData = new FormData();
         formData.append("upload", file);
 
@@ -75,66 +69,76 @@ const handleEditorChange = (event , editor) => {
         console.error("Error uploading file:", error);
         throw error;
       }
-    }
+    };
 
-    abort() {
+    const abort = () => {
       // Handle aborting the upload process if necessary
-    }
+    };
+
+    return {
+      upload,
+      abort,
+    };
   }
-  
 
   return (
-
-      <div className="create-blog">
-        <form>
-          <h1>WriteBlogs </h1>
-          <input
-            placeholder="Enter Your title "
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-
-          <input
-            type="file"
-            placeholder="Choose Your image"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-            }}
-          />
-      
-        </form>
-
-        <CKEditor
-          editor={ClassicEditor}
-          config={{
-            extraPlugins: [customPlugin],
-            toolbar: [
-              "heading",
-              "|",
-              "bold",
-              "italic",
-              "link",
-              "bulletedList",
-              "numberedList",
-              "blockQuote",
-              "imageUpload",
-            ],
-         
+    <div className="create-blog">
+      <form>
+        <h1>WriteBlogs </h1>
+        <input
+          placeholder="Enter Your title "
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
           }}
-          data="<p>Write your blog content here...</p>"
-          onChange={handleEditorChange}
         />
-        <button onClick={handleSubmit}>Post</button>
-      </div>
 
+        <input
+          type="file"
+          placeholder="Choose Your image"
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }}
+        />
+      </form>
 
-  
+      <CKEditor
+        editor={ClassicEditor}
+        config={{
+          extraPlugins: [customPlugin],
+          toolbar: [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "blockQuote",
+            "imageUpload",
+          ],
+        }}
+        data="<p>Write your blog content here...</p>"
+        onChange={handleEditorChange}
+      />
+      <button onClick={handleSubmit}>Post</button>
+    </div>
   );
 };
 
 export default WriteBlogs;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -150,3 +154,42 @@ onChange={(e) => {
 >
 {" "}
 </textarea> */
+
+// function customPlugin(editor) {
+//   editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
+//     return new Upload(loader);
+//   };
+// }
+
+// class Upload {
+//   constructor(loader) {
+//     this.loader = loader;
+//   }
+
+//   async upload() {
+//     try {
+//       const file = await this.loader.file;
+//       const formData = new FormData();
+//       formData.append("upload", file);
+
+//       const response = await axios.post(
+//         "http://localhost:5000/api/upload",
+//         formData,
+//         {
+//           headers: {
+//             "Content-Type": "multipart/form-data",
+//           },
+//         }
+//       );
+
+//       return { default: response.data.url };
+//     } catch (error) {
+//       console.error("Error uploading file:", error);
+//       throw error;
+//     }
+//   }
+
+//   abort() {
+//     // Handle aborting the upload process if necessary
+//   }
+// }
