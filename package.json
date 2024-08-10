@@ -12,6 +12,7 @@
     "react-router-dom": "^6.24.1",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
+    "react-typed": "^2.0.12",
     "sass": "^1.77.8"
   },
   "scripts": {

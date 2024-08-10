@@ -14,22 +14,33 @@
       color: $white;
       padding-top: 100px;
       padding-left: 4%;
-      padding-right: 4%;
+      padding-right: 3%;
 
-      h1,
-      h2 {
-        font-size: 72px;
-        margin: 0;
+      h1{
+        font-size: calc(1rem + 3vw) ;
         margin: 20px 0;
         font-weight: 700;
+      
+        
       }
 
       h2 {
         color: $orange;
+        font-size: calc(1rem + 3vw) ;
+        margin: 20px 0;
+        font-weight: 700;
+      }
+
+      h3{
+        font-size: calc(1rem + 3vw) ;
+        margin: 20px 0;
+        font-weight: 700;
+        height: calc(1.6rem + 3vw) ;
+        
       }
 
       p {
-        margin-top: 30px;
+        padding-top: 20px;
         font-size: 16px;
         width: 600px;
         letter-spacing: 1px;
@@ -40,30 +51,31 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .home {
     > .hero {
-      background-image: url(../assets/hero.svg);
-
+  
       > .hero-left {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        padding-top: 80px;
+        padding-top: 20px;
         width: 600px;
+        margin:  100px auto;
 
         h1,
-        h2 {
-          font-size: 38px;
+        h2,h3 {
+          font-size: calc(1rem + 4vw);
           margin: 10px 0;
+          text-align: center;
         }
 
-        h2 {
-          color: $orange;
+        h3{
+          line-height: 1.4em;
         }
-
+    
         p {
+          padding-top: 50px;
           text-align: center;
           width: 400px;
         }
@@ -72,52 +84,19 @@
   }
 }
 
-@media screen and (max-width: 500px) {
-  .home {
-    > .hero {
-      background-image: url(../assets/hero.svg);
 
-      > .hero-left {
-        padding-top: 80px;
-        width: 500px;
-
-        h1,
-        h2 {
-          text-align: center;
-          font-size: 34px;
-          margin: 10px 0;
-          width: 400px;
-        }
-
-        h2 {
-          color: $orange;
-        }
-
-        p {
-          width: 400px;
-          text-align: center;
-        }
-      }
-    }
-  }
-}
 
 @media screen and (max-width: 420px) {
   .home {
     > .hero {
       > .hero-left {
-        padding-top: 100px;
-        width: 350px;
-
+    
         h1,
         h2 {
-          font-size: 30px;
-          width: 350px;
+          font-size: calc(0.75rem + 4vw) ;
+         
         }
-
-        h2 {
-          color: $orange;
-        }
+  
 
         p {
           width: 320px;

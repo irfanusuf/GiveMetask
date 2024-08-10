@@ -116,8 +116,7 @@
 @media only screen and (max-width : 1400px) {
 
   .navbar {
-    justify-content: space-around;
-
+  
     >.ul {
       >li {
         a {
@@ -125,10 +124,8 @@
         }
       }
     }
+    
     >.user {
-      display: none;
-    }
-    >.link-btn {
       display: none;
     }
   }
@@ -141,9 +138,9 @@
   .navbar{
 
     >.menu{
+      display: block;
       padding-top: 10px;
       font-size: 32px;
-      display: block;
       position: relative;
 
       >.drop-down{
@@ -153,11 +150,11 @@
         height: 100%;
         left: 0;
         top: 0;
-        width: 250px;
+        width: 215px;
         z-index: 1;
         
         >.close-btn{
-          padding-left: 200px;
+          padding-left: 165px;
           padding-top: 12px;
           color: black;
         }
@@ -177,6 +174,13 @@
           }
         }
       }
+    }
+    
+    > img {
+    
+      width: 180px;
+      padding-top: 5px;
+     
     }
 
     >.ul{
