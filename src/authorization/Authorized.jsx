@@ -16,8 +16,12 @@ const Authorized = () => {
       }
 
       if (token) {
-        const baseUrl = `http://localhost:4000/token/verify/${token}`;
-        const res = await axios.get(baseUrl);
+       
+
+        // const baseUrl = "http://localhost:4000";
+        const baseUrl = "https://algoacademy.onrender.com";
+        
+        const res = await axios.get(`${baseUrl}/token/verify/${token}`);
 
         if (res.data.message === "tokenNotVerfied") {
           navigate("/login");
