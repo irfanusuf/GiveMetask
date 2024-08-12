@@ -13,7 +13,8 @@ const PersonalBlogs = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const baseUrl = "http://localhost:4000";
+    // const baseUrl = "http://localhost:4000";
+      const baseUrl = "https://algoacademy.onrender.com";
      
       const url = `${baseUrl}/post/getAll`;
       

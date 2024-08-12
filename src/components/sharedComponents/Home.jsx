@@ -19,7 +19,7 @@ const Home = (props) => {
           <h1>{props.heading}</h1>
 
           <h2>
-            {" "}
+        
             <Typed
               strings={[subheading]}
               typeSpeed={30}
@@ -27,7 +27,7 @@ const Home = (props) => {
               backDelay={1000}
               loop={false}
               showCursor ={false}
-            />{" "}
+            />
           </h2>
 
           <h3>

@@ -18,7 +18,8 @@ const SignUp = () => {
     document.title = "ALGO ACADEMY | REGISTER";
   }, []);
 
-  const baseUrl = "http://localhost:4000";
+   // const baseUrl = "http://localhost:4000";
+   const baseUrl = "https://algoacademy.onrender.com";
 
   const handleSignup = async () => {
     try {

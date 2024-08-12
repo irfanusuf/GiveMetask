@@ -23,7 +23,10 @@ const Navbar = (props) => {
 
   const getUserData = async () => {
     try {
-      const baseUrl = "http://localhost:4000";
+      // const baseUrl = "http://localhost:4000";
+      const baseUrl = "https://algoacademy.onrender.com";
+
+
       const token = localStorage.getItem("token");
       const res = await axios.get(`${baseUrl}/user/getUser/${token}`);
 
@@ -40,6 +43,7 @@ const Navbar = (props) => {
   return (
     <>
       <div className="navbar">
+        
         <div className="menu">
           <TiThMenu onClick={menuOpenClose}/>
 

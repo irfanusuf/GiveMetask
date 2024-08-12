@@ -9,7 +9,8 @@ const SecureIndex = () => {
 
   const [user, setUser] = useState("dummy");
   const [email, setEmail] = useState("");
-  const baseUrl = "http://localhost:4000";
+   // const baseUrl = "http://localhost:4000";
+   const baseUrl = "https://algoacademy.onrender.com";
   const token = localStorage.getItem("token")
 
   const getUserData = async (token) => {
