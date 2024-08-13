@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Home from "./sharedComponents/Home";
-import "../styles/blogs.scss";
+import "../styles/p-blogs.scss";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import Loading from "./sharedComponents/Loading";
@@ -52,15 +52,14 @@ const PersonalBlogs = () => {
         punch3 = {""}
       />
         
-      <div className="blogs">
-      <h1> Personal Blogs</h1>
+      <div className="blogs"> 
 
         {posts &&
           posts.map((post) => (
-            <div className="blog">
+            <div className="ck-content" >
               <h1>{post.title}</h1>
-              <img src={post.imageUrl} alt="no-image" />
-              <p>{post.author}</p>
+              {/* <img src={post.imageUrl} alt="no-image" /> */}
+              {/* <p>{post.author}</p> */}
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
           ))}

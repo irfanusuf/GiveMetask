@@ -13,7 +13,7 @@ const WriteBlogs = () => {
 
   // const formData = { title, image, description };
 
-  // above  formData will not work becoz we are sending .jpg/.png in formData 
+  // above  formData will not work becoz we are sending .jpg/.png in formData
 
   const formData = new FormData();
 
@@ -30,12 +30,13 @@ const WriteBlogs = () => {
     e.preventDefault();
     try {
       setLoading(true);
-       // const baseUrl = "http://localhost:4000";
-       const baseUrl = "https://algoacademy.onrender.com";
+      // const baseUrl = "http://localhost:4000";
+      const baseUrl = "https://algoacademy.onrender.com";
       const token = localStorage.getItem("token");
       const url = `${baseUrl}/post/createPost/${token}`;
       const res = await axios.post(url, formData);
-      toast.success(res.data.message);
+
+      toast.success(res.data.message); //problem
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -51,12 +52,17 @@ const WriteBlogs = () => {
   function uploadFunction(loader) {
     const upload = async () => {
       try {
-        const file = await loader.file;
+        const image = await loader.file;
+
         const formData = new FormData();
-        formData.append("upload", file);
+
+        formData.append("image", image);
+
+        const baseUrl = "http://localhost:4000";
+        //  const baseUrl = "https://algoacademy.onrender.com";
 
         const response = await axios.post(
-          "http://localhost:5000/api/upload",
+          `${baseUrl}/post/upload/image`,
           formData,
           {
             headers: {
@@ -128,23 +134,6 @@ const WriteBlogs = () => {
 };
 
 export default WriteBlogs;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* <textarea
 placeholder="Enter Your Description "

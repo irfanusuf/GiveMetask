@@ -1,25 +1,19 @@
-@import url('./global.scss');
+@import url("./global.scss");
 
-.create-blog{
-  
-    width: 60%;
-    margin: auto;
+.create-blog {
+  width: 80%;
+  margin: auto;
 
-
->form{
-   
-    >input {
-        width: 500px;
-        margin-bottom: 20px;
-        padding: 5px 20px;
-        font-size: 22px;
-
+  > form {
+    > input {
+     
+      margin-bottom: 20px;
+      padding: 5px 20px;
+      font-size: 22px;
     }
+  }
 
-}
-
-
->button{
+  > button {
     background-color: orange;
     padding: 10px 30px;
     border: none;
@@ -27,11 +21,26 @@
     margin-top: 20px;
     color: rgb(253, 253, 253);
     font-size: 20px;
-
-
+  }
 }
 
 
 
+@media only screen and (max-width : 600px) {
+    
 
+    .create-blog {
+        width: 100%;
+    
+        padding: 1%;
+      
+        > form {
+        
+        }
+      
+        > button {
+          
+        }
+      }
+      
 }
