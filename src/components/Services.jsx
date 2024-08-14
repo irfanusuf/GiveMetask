@@ -40,7 +40,7 @@ const Services = () => {
   useEffect(() => {
     (async () => {
       const isAuth = await checkAuth();
-      console.log(isAuth)
+      console.log("isAuth" + ": " +isAuth)
       setIsAuthorised(isAuth)
       
     })();
@@ -85,23 +85,24 @@ const Services = () => {
             }}
           />
 
-          <button
+          <button disabled = {query===""}
             onClick={() => {
               setLoading(true);
             }}
           >
-            {loading ? "loading......" : "search"}
+            {loading ? "loading..." : "search"}
           </button>
         </div>
 
         <div className="cards">
           {photos &&
             photos.map((element) => (
-              <Card
-                id={element.id}
+              <div key={element._id}  className="card">
+              <Card 
                 auth={element.photographer}
                 src={element.src.medium}
               />
+              </div>
             ))}
         </div>
       </div>

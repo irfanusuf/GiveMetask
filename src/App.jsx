@@ -53,7 +53,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar change={change} />
+        <Navbar change={change} setChange={setChange} />
         <div className="main">
           <Routes>
             {/* unspecified path */}
