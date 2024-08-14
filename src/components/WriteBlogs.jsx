@@ -58,8 +58,8 @@ const WriteBlogs = () => {
 
         formData.append("image", image);
 
-        const baseUrl = "http://localhost:4000";
-        //  const baseUrl = "https://algoacademy.onrender.com";
+        // const baseUrl = "http://localhost:4000";
+         const baseUrl = "https://algoacademy.onrender.com";
 
         const response = await axios.post(
           `${baseUrl}/post/upload/image`,

@@ -46,7 +46,7 @@
 
     >.user{
       display: flex;
-      padding-left: 15%;
+   
       margin-right: 10px;
 
       >p{
@@ -103,6 +103,7 @@
     }
 
     >.triple-dot{
+      display: none;
       padding-top: 10px;
       font-size: 24px; 
     }
@@ -137,8 +138,11 @@
     }
 
     >.triple-dot{
-      padding-right: 15px;
-     }
+      display: block;
+      padding-top: 10px;
+      font-size: 24px; 
+      padding-right: 30px;
+    }
   }
 }
 
@@ -211,6 +215,8 @@
     >.ul{
       display: none;
     }
+    
+   
 
     
   }

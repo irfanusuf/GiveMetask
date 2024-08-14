@@ -4,8 +4,7 @@ import { ReactTyped as Typed } from "react-typed";
 
 const Home = (props) => {
 
-  const subheading = props.subheading;
-
+ const subheading = props.subheading;
  const  punch1 = props.punch1
  const  punch2 = props.punch2
  const  punch3 = props.punch3
@@ -31,7 +30,7 @@ const Home = (props) => {
           </h2>
 
           <h3>
-            {" "}
+         
             <Typed
               strings={[punch1 , punch2 , punch3]}
               typeSpeed={30}
@@ -40,7 +39,7 @@ const Home = (props) => {
               loop={true}
               showCursor ={false}
         
-            />{" "}
+            />
           </h3>
 
        

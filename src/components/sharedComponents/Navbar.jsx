@@ -13,14 +13,15 @@ import { IoClose } from "react-icons/io5";
 
 const Navbar = (props) => {
   const [user, setUser] = useState("");
+
   const [showMenu, setShowMenu] = useState(false);
+  const [showLogout, setshowLogout] = useState(false);
 
   function menuOpenClose (){
     setShowMenu(!showMenu)
 
   }
   
-
   const getUserData = async () => {
     try {
       // const baseUrl = "http://localhost:4000";
@@ -47,7 +48,7 @@ const Navbar = (props) => {
         <div className="menu">
           <TiThMenu onClick={menuOpenClose}/>
 
-          <div className={showMenu ? "drop-down" : "display-none"} >
+          <div className={showMenu ? "drop-down animate__animated animate__bounceInLeft" : " drop-down animate__animated animate__backOutLeft  "}  >
             <div className="close-btn"><IoClose onClick={menuOpenClose} /></div>
             <ul>
               <li>
@@ -96,7 +97,15 @@ const Navbar = (props) => {
           </span>
           <p>{user}</p>
           <div>
-            <IoIosArrowDropdown />
+            <IoIosArrowDropdown onClick={()=>{setshowLogout(!showLogout)}}/>
+          </div>
+
+          <div className={showLogout ? "logout" : "display-none"}>
+            <ul>
+              <li>Logout</li>
+              <li>Dummy</li>
+              <li>Dummy</li>
+            </ul>
           </div>
         </div>
 

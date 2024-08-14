@@ -4,11 +4,14 @@ import "../styles/p-blogs.scss";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import Loading from "./sharedComponents/Loading";
+import { useNavigate } from "react-router-dom";
 
 const PersonalBlogs = () => {
   const [posts, setPosts] = useState([]);
 
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate()
 
   const fetchBlogs = async () => {
     try {
@@ -23,7 +26,6 @@ const PersonalBlogs = () => {
 
       if (res.data.success === true) {
         setPosts(res.data.posts);
-        toast.success(res.data.message);
       } else {
         toast.error(res.data.message);
       }
@@ -56,11 +58,13 @@ const PersonalBlogs = () => {
 
         {posts &&
           posts.map((post) => (
-            <div className="ck-content" >
+            <div className="blog" onClick={()=>{navigate(`/user/blogs/${post._id}`)}}>
+       
+             
+              <img src={post.imageUrl} alt="no-image" />
               <h1>{post.title}</h1>
-              {/* <img src={post.imageUrl} alt="no-image" /> */}
-              {/* <p>{post.author}</p> */}
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <p>Author : {post.author}</p>
+      
             </div>
           ))}
       </div>

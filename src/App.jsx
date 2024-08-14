@@ -14,6 +14,7 @@ import Loading from "./components/sharedComponents/Loading";
 import Index from "./components/Index";
 import PersonalBlogs from "./components/PersonalBlogs";
 import WriteBlogs from "./components/WriteBlogs";
+import SingleBlog from "./components/SingleBlog";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() => delay(import("./components/SecureIndex")));
@@ -67,6 +68,9 @@ const App = () => {
             <Route path="/about" element={<About />} />
 
             <Route path="/user/blogs" element={<PersonalBlogs />} />
+
+            <Route path="/user/blogs/:_id" element={<SingleBlog/>} />
+
 
             <Route path="/user/post" element={<WriteBlogs />} />
             <Route
