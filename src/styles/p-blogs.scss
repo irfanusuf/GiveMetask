@@ -26,16 +26,45 @@
 }
 
 .title {
+  width: 70%;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
+
+
 .ck-content{
-  width: 60%;
+  width: 70%;
   margin: auto;
 }
+
+
+@media screen and (max-width: 900px) {
+  .blogs {
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .title {
+    width: 90%;
+    flex-direction: column ;
+    align-items: left;
+    justify-content: left;
+  }
+  
+  
+  .ck-content{
+    width: 90%;
+    margin: auto;
+  }
+
+}
+
+
+
+
 
 
 .ck-content h1,
@@ -116,9 +145,3 @@
   margin-right: auto;
 }
 
-@media screen and (max-width: 900px) {
-  .blogs {
-    width: 90%;
-    margin: 30px auto;
-  }
-}

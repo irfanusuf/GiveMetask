@@ -16,19 +16,13 @@ const Authorized = () => {
       }
 
       if (token) {
-       
-
         // const baseUrl = "http://localhost:4000";
         const baseUrl = "https://algoacademy.onrender.com";
-        
         const res = await axios.get(`${baseUrl}/token/verify/${token}`);
-
         if (res.data.message === "tokenNotVerfied") {
           navigate("/login");
           return false;
         } else if (res.data.message === "verified") {
-          const id = res.data.decode._id;
-          localStorage.setItem("id", id);
           return true;
         }
       }

@@ -50,7 +50,7 @@ const SingleBlog = () => {
 
       <div className="title">
         <h1>{data.title}</h1>
-        <p>{data.author}</p>
+        <p><b>Author :</b> <i>{data.author}</i></p>
       </div>
 
       <div
