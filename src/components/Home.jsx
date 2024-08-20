@@ -6,13 +6,10 @@ import axios from "axios";
 function Home() {
   const [content, setContent] = useState("");
 
-
   const handleEditorChange = (event, editor) => {
     const data = editor.getData();
     setContent(data);
   };
-
-
 
   const handleSubmit = () => {
     axios
@@ -32,8 +29,6 @@ function Home() {
       return new MyUploadAdapter(loader);
     };
   }
-
-  
 
   class MyUploadAdapter {
     constructor(loader) {
@@ -69,38 +64,45 @@ function Home() {
   }
 
   return (
-   
-      <div className="home">
-        <h2>Write a Blog</h2>
-      
-        <CKEditor
-          editor={ClassicEditor}
-          config={{
-            extraPlugins: [MyCustomUploadAdapterPlugin],
-            toolbar: [
-              "heading",
-              "|",
-              "bold",
-              "italic",
-              "link",
-              "bulletedList",
-              "numberedList",
-              "blockQuote",
-              "imageUpload",
-            ],
-         
-          }}
-          data="<p>Write your blog content here...</p>"
-          onChange={handleEditorChange}
-        />
-        <button
-          onClick={handleSubmit}
-          style={{ marginTop: "10px", padding: "10px 20px" }}
-        >
-          Save Blog
-        </button>
-      </div>
+    <div className="home">
+      <h2>Write a Blog</h2>
 
+      <CKEditor
+        editor={ClassicEditor}
+        config={{
+          extraPlugins: [MyCustomUploadAdapterPlugin],
+          toolbar: [
+            "heading", // Headings (e.g., Heading 1, Heading 2)
+            "|",
+            "bold", // Bold text
+            "italic", // Italic text
+            "underline", // Underline text
+            "strikethrough", // Strikethrough text
+            "link", // Add or edit links
+            "|",
+            "bulletedList", // Bulleted list
+            "numberedList", // Numbered list
+            "blockQuote", // Block quote
+            "codeBlock", // Code block (requires additional plugin)
+            "|",
+            "imageUpload", // Image upload (requires additional configuration)
+            "mediaEmbed", // Embed media (e.g., YouTube videos)
+            "insertTable", // Insert tables
+            "|",
+            "undo", // Undo last action
+            "redo" // Redo last undone action
+          ],
+        }}
+        data="<p>Write your blog content here...</p>"
+        onChange={handleEditorChange}
+      />
+      <button
+        onClick={handleSubmit}
+        style={{ marginTop: "10px", padding: "10px 20px" }}
+      >
+        Save Blog
+      </button>
+    </div>
   );
 }
 
