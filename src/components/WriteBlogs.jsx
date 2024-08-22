@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../styles/WriteBlogs.scss";
-import axios from "axios";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from "react-toastify";
+import api from "../utils/AxiosInstance";
 
 const WriteBlogs = () => {
   const [title, setTitle] = useState("");
@@ -30,12 +30,7 @@ const WriteBlogs = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      // const baseUrl = "http://localhost:4000";
-      const baseUrl = "https://algoacademy.onrender.com";
-      const token = localStorage.getItem("token");
-      const url = `${baseUrl}/post/createPost/${token}`;
-      const res = await axios.post(url, formData);
-
+      const res = await api.post(`/post/createPost`, formData);
       toast.success(res.data.message); //problem
       console.log(res);
     } catch (error) {
@@ -58,11 +53,9 @@ const WriteBlogs = () => {
 
         formData.append("image", image);
 
-        // const baseUrl = "http://localhost:4000";
-         const baseUrl = "https://algoacademy.onrender.com";
 
-        const response = await axios.post(
-          `${baseUrl}/post/upload/image`,
+        const response = await api.post(
+          `/post/upload/image`,
           formData,
           {
             headers: {

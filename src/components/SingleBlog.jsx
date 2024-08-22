@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import Home from "./sharedComponents/Home";
 import "../styles/p-blogs.scss";
 import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
 import { useParams } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import { FaComments } from "react-icons/fa";
+import { CiShare2 } from "react-icons/ci";
+import api from "../utils/AxiosInstance";
 
 const SingleBlog = () => {
   const { _id } = useParams();
+
   const [data, setData] = useState({
     title: "",
     imageUrl: "",
@@ -17,19 +21,33 @@ const SingleBlog = () => {
     dislike: [],
     share: [],
   });
+  const [like, setLike] = useState(false);
 
   const fetchSingleBlog = async () => {
     try {
-      //  const baseUrl = "http://localhost:4000";
-      const baseUrl = "https://algoacademy.onrender.com";
-      const res = await axios.get(`${baseUrl}/post/get/${_id}`);
-
+    
+      const res = await api.get(`/post/get/${_id}`);
       setData(res.data.post);
     } catch (error) {
       toast.error(error.message);
       console.log(error);
     }
   };
+
+  const handleLike = async ()=>{
+
+    try {
+      setLike(!like)
+      
+      const res = await api.put(`/post/pushLike/${_id}`)
+      console.log(res)
+
+
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
 
   useEffect(() => {
     fetchSingleBlog();
@@ -50,13 +68,28 @@ const SingleBlog = () => {
 
       <div className="title">
         <h1>{data.title}</h1>
-        <p><b>Author :</b> <i>{data.author}</i></p>
+        <p>
+          <b>Author :</b> <i>{data.author}</i>
+        </p>
       </div>
 
       <div
         className="ck-content"
         dangerouslySetInnerHTML={{ __html: data.content }}
       />
+
+      <div className="interactivity">
+       <span onClick={handleLike}>{like ? <FaHeart style={{ color: "red" }} /> : <FaHeart />}</span> 
+
+        <span>{data.likes.length}</span>
+
+        <span>
+          <FaComments />
+        </span>
+        <span>
+          <CiShare2 />
+        </span>
+      </div>
     </>
   );
 };

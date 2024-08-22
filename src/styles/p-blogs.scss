@@ -25,6 +25,9 @@
   }
 }
 
+
+
+
 .title {
   width: 70%;
   margin: auto;
@@ -33,11 +36,19 @@
   align-items: center;
 }
 
-
-
 .ck-content{
   width: 70%;
   margin: auto;
+}
+
+.interactivity{
+  width: 70%;
+  margin: auto;
+  margin-bottom: 50px;
+  >span{
+    font-size: 28px;
+    margin-right: 10px;
+  }
 }
 
 

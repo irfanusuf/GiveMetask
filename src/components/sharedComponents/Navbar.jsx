@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/web Title with logo.svg";
-import axios from "axios";
-import { FaUserTie } from "react-icons/fa6";
+import api from "../../utils/AxiosInstance";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { HiDotsVertical } from "react-icons/hi";
@@ -14,12 +13,10 @@ import profile_pic from "../../assets/bg.jpg"
 const Navbar = (props) => {
   const [user, setUser] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+
   const [showSettings , setShowSettings] = useState(false)
   const [logoutMessage , setlogoutMessage] =useState("")
   
-
-  const token = localStorage.getItem("token")
-
   const navigate = useNavigate()
 
   function menuOpenClose (){
@@ -31,10 +28,8 @@ const Navbar = (props) => {
   }
 
   function handleLogout (){
- 
+///  change the logic to cookie mechanism 
     setShowSettings(false)
-  if(token){
-    localStorage.clear()
     setUser("")
     navigate('/')
     setlogoutMessage("Logged Out Succesfully!")
@@ -42,15 +37,14 @@ const Navbar = (props) => {
       setlogoutMessage("")
       
     }, 5000);
-  }
+ 
 }
   
   const getUserData = async () => {
     try {
-      // const baseUrl = "http://localhost:4000";
-      const baseUrl = "https://algoacademy.onrender.com";
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`${baseUrl}/user/getUser/${token}`);
+     
+  
+      const res = await api.get(`/user/getUser`);
       setUser(res.data.email);
     } catch (error) {
       console.log(error);
@@ -58,10 +52,10 @@ const Navbar = (props) => {
   };
 
   useEffect(() => {
-  if(token){
+  
    getUserData(); 
-  }
-  }, [props.change ,token]);
+  
+  }, [props.change ]);
 
   return (
     <>
@@ -123,7 +117,7 @@ const Navbar = (props) => {
         </ul>
 
         {user !==""?<div className="user">
-          <span><FaUserTie /></span>
+          <span><img src={profile_pic} width={"30px"}/></span>
           <p>{user}</p>
 
           <div onClick={opencloseSettings}>{showSettings ?<IoClose/>:<IoIosArrowDropdown/>}

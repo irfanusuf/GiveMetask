@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../styles/signup.scss";
 import { ToastContainer, toast } from "react-toastify";
+import api from "../utils/AxiosInstance";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -18,14 +19,11 @@ const SignUp = () => {
     document.title = "ALGO ACADEMY | REGISTER";
   }, []);
 
-   // const baseUrl = "http://localhost:4000";
-   const baseUrl = "https://algoacademy.onrender.com";
-
   const handleSignup = async () => {
     try {
       // xml http post request
       setLoading(true);
-      const res = await axios.post(`${baseUrl}/user/signup`, {
+      const res = await api.post(`/user/signup`, {
         username,
         email,
         password,

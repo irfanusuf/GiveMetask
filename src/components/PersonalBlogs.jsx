@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import Loading from "./sharedComponents/Loading";
 import { useNavigate } from "react-router-dom";
+import api from "../utils/AxiosInstance";
 
 const PersonalBlogs = () => {
   const [posts, setPosts] = useState([]);
@@ -16,14 +17,8 @@ const PersonalBlogs = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-    // const baseUrl = "http://localhost:4000";
-      const baseUrl = "https://algoacademy.onrender.com";
-     
-      const url = `${baseUrl}/post/getAll`;
-      
-      const res = await axios.get(url);
-    
 
+      const res = await api.get("/post/getAll");
       if (res.data.success === true) {
         setPosts(res.data.posts);
       } else {
