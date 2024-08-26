@@ -14,8 +14,6 @@ const Login = (props) => {
   const formData = { email, password };
 
 
-
-
   const LoginHandler = async () => {
     try {
       setLoading(true)
