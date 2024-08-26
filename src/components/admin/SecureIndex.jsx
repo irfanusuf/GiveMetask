@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/secure.scss";
-import Authorized from "../authorization/Authorized";
+import "./SecureIndex.scss";
+import Authorized from "../../authorization/Authorized";
 
 const SecureIndex = () => {
   Authorized();
@@ -8,7 +8,6 @@ const SecureIndex = () => {
 
   return (
     <>
-    
         <div className="secure-index">
           <h1> Welcome to the secure page of this Website </h1>
           <p>only admin can view this page </p>

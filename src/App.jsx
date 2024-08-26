@@ -6,8 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/sharedComponents/Navbar";
 import Footer from "./components/sharedComponents/Footer";
 import Contact from "./components/Contact";
-import About from "./components/About";
-import NoPage from "./components/NoPage";
+import NoPage from "./components/sharedComponents/NoPage";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import Loading from "./components/sharedComponents/Loading";
@@ -15,11 +14,15 @@ import Index from "./components/Index";
 import PersonalBlogs from "./components/PersonalBlogs";
 import WriteBlogs from "./components/WriteBlogs";
 import SingleBlog from "./components/SingleBlog";
+import Carriers from "./components/Carriers";
+import Courses from "./components/Courses";
 
 // lazy import or // dynamic import
-const SecureIndex = React.lazy(() => delay(import("./components/SecureIndex")));
-const Services = React.lazy(() => delay(import("./components/Services")));
-const Blogs = React.lazy(() => delay(import("./components/Blogs")));
+const SecureIndex = React.lazy(() =>
+  delay(import("./components/admin/SecureIndex"))
+);
+// const Services = React.lazy(() => delay(import("./components/Services")));
+// const Blogs = React.lazy(() => delay(import("./components/Blogs")));
 
 // delay is an async function which will delay importing of file by 1 seconds
 
@@ -64,31 +67,20 @@ const App = () => {
               path="/login"
               element={<Login setChange={setChange} change={change} />}
             />
+           
+            <Route path="/blogs" element={<PersonalBlogs />} />
+            <Route path="/blogs/:_id" element={<SingleBlog />} />
+            <Route path="/courses" element={<Courses/>} />
+            <Route path="/carrier" element={<Carriers />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-
-            <Route path="/user/blogs" element={<PersonalBlogs />} />
-
-            <Route path="/user/blogs/:_id" element={<SingleBlog/>} />
 
 
-            <Route path="/user/post" element={<WriteBlogs />} />
-            <Route
-              path="/services"
-              element={
-                <Suspense fallback={<Loading />}>
-                  <Services />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/blogs"
-              element={
-                <Suspense fallback={<Loading />}>
-                  <Blogs />
-                </Suspense>
-              }
-            />
+
+
+            <Route path="/admin/post" element={<WriteBlogs />} />
+          
+            
+
             <Route
               path="/secureIndex"
               element={

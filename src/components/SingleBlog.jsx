@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Home from "./sharedComponents/Home";
-import "../styles/p-blogs.scss";
+import "./Singleblog.scss";
 import { toast, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";

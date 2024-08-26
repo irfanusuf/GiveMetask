@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/WriteBlogs.scss";
+import "./WriteBlogs.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { toast } from "react-toastify";

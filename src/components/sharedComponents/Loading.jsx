@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../styles/loading.scss"
+import "./Loading.scss"
 import loader from "../../assets/loader.gif"
 
 const Loading = () => {

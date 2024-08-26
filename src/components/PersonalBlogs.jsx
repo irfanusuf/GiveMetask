@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Home from "./sharedComponents/Home";
-import "../styles/p-blogs.scss";
+import "./PersonalBlogs.scss";
 import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
-import Loading from "./sharedComponents/Loading";
 import { useNavigate } from "react-router-dom";
 import api from "../utils/AxiosInstance";
 
@@ -42,18 +40,18 @@ const PersonalBlogs = () => {
     <>
       <ToastContainer />
       <Home
-        subheading={"Personal Blogs"}
+        subheading={"Latest Tech Blogs"}
         para = {"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ratione. Sunt error voluptatem, iure quo, at ipsam alias quisquam fuga ex pariatur commodi corporis eos dignissimos. Natus temporibus earum expedita."}
         punch1 = {""}
         punch2 = {""}
         punch3 = {""}
       />
         
-      <div className="blogs"> 
+      <div className="p-blogs"> 
 
         {posts &&
           posts.map((post) => (
-            <div className="blog" onClick={()=>{navigate(`/user/blogs/${post._id}`)}}>
+            <div className="blog" onClick={()=>{navigate(`/blogs/${post._id}`)}}>
        
              
               <img src={post.imageUrl} alt="no-image" />

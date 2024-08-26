@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useTransition } from "react";
-import "../styles/Services.scss";
+import "./Services.scss";
 import Card from "./sharedComponents/Card";
 import Authorized from "../authorization/Authorized";
 import Home from "./sharedComponents/Home";

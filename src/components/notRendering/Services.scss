@@ -1,0 +1,78 @@
+.services {
+  min-height: 90vh;
+
+
+
+  >h1{
+    text-align: center;
+  }
+
+  >.input{
+    width: 300px;
+    margin: auto;
+    >input{
+        padding: 5px 10px ;
+        border: none;
+        border-bottom: 1px solid black;
+        margin-right: 20px;
+
+    }
+    >button{
+        color: white;
+        background-color: blue;
+        padding: 5px 10px ;
+        border-radius: 7px;
+        border: none;
+    }
+  }
+
+}
+
+
+
+ .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  > .card {
+   
+    border-radius: 5px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  
+
+    > img {
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    > span {
+      padding-top: 10px;
+     font-family: cursive;
+     font-style: italic;
+    }
+  }
+}
+
+
+@media screen and (max-width : 600px) {
+  .cards {
+    
+    width: 100%;
+  
+    > .card {
+
+      > span {
+        padding-left: 10px;
+       
+      }
+    }
+  }
+  
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/Home.scss";
+import "./Home.scss";
 import { ReactTyped as Typed } from "react-typed";
 
 const Home = (props) => {

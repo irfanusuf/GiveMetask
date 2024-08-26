@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/login.scss";
-import axios from "axios";
+import "./Login.scss";
 import api from "../utils/AxiosInstance";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +22,7 @@ const Login = (props) => {
       if (res.data.message === "user loggin success") {
         toast.success("User Logged In succesfully!");
         props.setChange(!props.change)
-        navigate("/secureIndex");
+        navigate("/");
 
         console.log(res)
       } else {

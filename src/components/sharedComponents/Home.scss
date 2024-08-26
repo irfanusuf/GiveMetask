@@ -1,16 +1,23 @@
-@import "./global.scss";
+@import "../../styles/global.scss";
 
 .home {
-  min-height: 700px;
+  min-height: 600px;
+  // background-color: #16054836;
+  position: relative;
+  
 
   > .hero {
-    background-color: $black;
-    background-image: url(../assets/hero.svg);
+  
+    background-image: url(../../assets/hero.svg);
+    z-index: -1;
     background-size: cover;
-    min-height: 700px;
+    min-height: 600px;
     display: flex;
+    position: absolute;
+    width: 100%;
 
     > .hero-left {
+      
       color: $white;
       padding-top: 100px;
       padding-left: 4%;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/blogs.scss";
+import "./blogs.scss";
 import Authorized from "../authorization/Authorized";
 import Loading from "./sharedComponents/Loading";
 import Home from "./sharedComponents/Home";

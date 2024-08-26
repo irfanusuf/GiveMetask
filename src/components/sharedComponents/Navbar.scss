@@ -1,7 +1,7 @@
-@import "./global.scss";
+@import "../../styles/global.scss";
 
   .navbar {
-    background-image:url(../assets/hero.svg);
+    background-image:url(../../assets/hero.svg);
     display: flex;
     position: sticky;
     top: 0;
