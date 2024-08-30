@@ -2,12 +2,15 @@
   background-color: black;
   min-height: 20vh;
   color: aliceblue;
-  justify-content: space-around;
+  justify-content: space-evenly;
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
 
   > .quick-links {
+    width: 300px;
+    margin-bottom: 50px;
+    
     > h3 {
       color: orange;
     }
@@ -24,6 +27,8 @@
     }
   }
   > .social-media {
+    width: 300px;
+    margin-bottom: 50px;
     > h3 {
       color: orange;
     }
@@ -46,7 +51,30 @@
       }
     }
   }
+
+  >.legal{
+    width: 300px;
+    margin-bottom: 50px;
+    
+    >h3{
+        color: orange;
+    }
+    > ul {
+        padding-left: 20px;
+        > li {
+          margin-bottom: 10px;
+          > a {
+            color: aliceblue;
+            text-decoration: none;
+          }
+        }
+      }
+  }
+
   > .subscription {
+    width: 300px;
+
+    
     > h3 {
       color: orange;
     }
@@ -73,21 +101,7 @@
 
    
   }
-  >.legal{
-    >h3{
-        color: orange;
-    }
-    > ul {
-        padding-left: 20px;
-        > li {
-          margin-bottom: 10px;
-          > a {
-            color: aliceblue;
-            text-decoration: none;
-          }
-        }
-      }
-  }
+  
 }
 
 .footer-2 {
