@@ -37,7 +37,7 @@ const Carriers = () => {
       <div className="services">
         <h1> Join us </h1>
 
-        </div>
+      </div>
 
      
     </>

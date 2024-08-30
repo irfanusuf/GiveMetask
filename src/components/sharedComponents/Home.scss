@@ -54,6 +54,21 @@
         line-height: 1.5;
         color: rgba(209, 195, 195, 0.932);
       }
+      >div{
+
+        >button{
+          margin-right: 10px;
+          font-size: larger;
+
+        }
+        >.btn1{
+          background-color: aliceblue;
+          color: rgb(255, 94, 0);
+        }
+        >.btn2{
+
+        }
+      }
     }
   }
 }
