@@ -56,7 +56,7 @@ const PersonalBlogs = () => {
              
               <img src={post.imageUrl} alt="no-image" />
               <h1>{post.title}</h1>
-              <p>Author : {post.author}</p>
+              <p> Blog by : <i>{post.author}</i> </p>
       
             </div>
           ))}

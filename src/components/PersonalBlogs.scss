@@ -6,9 +6,7 @@
   flex-wrap: wrap;
   
   > .blog {
-    width: 300px;
-    height: 420px;
-   
+    width: 320px; 
     margin: 20px;
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.267);
     border-radius: 10px;
@@ -24,7 +22,11 @@
 
 @media screen and (max-width: 900px) {
   .p-blogs {
-    width: 90%;
+    width: 95%;
     margin: 30px auto;
+
+    >.blog{
+      width: 400px; 
+    }
   }
 }
