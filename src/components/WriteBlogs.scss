@@ -5,11 +5,11 @@
   margin: auto;
 
   > form {
-    > input {
-     
+    > input { 
       margin-bottom: 20px;
       padding: 5px 20px;
       font-size: 22px;
+      width: 300px;
     }
   }
 
@@ -17,7 +17,7 @@
     background-color: orange;
     padding: 10px 30px;
     border: none;
-    border-radius: 20px;
+    border-radius: 20px; 
     margin-top: 20px;
     color: rgb(253, 253, 253);
     font-size: 20px;
@@ -30,17 +30,17 @@
     
 
     .create-blog {
-        width: 100%;
+        width: 90%;
     
-        padding: 1%;
+        padding: 2%;
       
-        > form { 
+        // > form { 
         
-        }
+        // }
       
-        > button {
+        // > button {
           
-        }
+        // }
       }
       
 }

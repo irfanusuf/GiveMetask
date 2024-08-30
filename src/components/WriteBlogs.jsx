@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./WriteBlogs.scss";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import api from "../utils/AxiosInstance";
 
 const WriteBlogs = () => {
@@ -30,11 +30,18 @@ const WriteBlogs = () => {
     e.preventDefault();
     try {
       setLoading(true);
+      if(title === ""){
+        return toast.error("Title Required!")
+      }
       const res = await api.post(`/post/createPost`, formData);
-      toast.success(res.data.message); //problem
+      toast.success(res.data.message); 
       console.log(res);
     } catch (error) {
+      setLoading(false)
       console.log(error);
+    }
+    finally{
+      setLoading(false)
     }
   };
 
@@ -82,6 +89,12 @@ const WriteBlogs = () => {
   }
 
   return (
+
+    <>
+    
+  <ToastContainer/>
+
+
     <div className="create-blog">
       <form>
         <h1>WriteBlogs </h1>
@@ -121,8 +134,9 @@ const WriteBlogs = () => {
         data="<p>Write your blog content here...</p>"
         onChange={handleEditorChange}
       />
-      <button onClick={handleSubmit}>Post</button>
+      <button onClick={handleSubmit} disabled={loading}>{loading ? "upload..." : "upload" }</button>
     </div>
+    </>
   );
 };
 
