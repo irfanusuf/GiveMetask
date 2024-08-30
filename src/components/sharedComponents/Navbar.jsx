@@ -52,6 +52,9 @@ const Navbar = (props) => {
 
   return (
     <>
+   
+
+   
       <div className="navbar">
         <div className="menu">
           <TiThMenu onClick={menuOpenClose} />
@@ -111,7 +114,7 @@ const Navbar = (props) => {
         {user !== "" ? (
           <div className="user">
             <span>
-              <img src={profile_pic} width={"30px"} />
+              <img src={profile_pic} width={"30px"} alt="profile"/>
             </span>
             <p>{user}</p>
 
@@ -158,7 +161,7 @@ const Navbar = (props) => {
             <div className={showSettings ? "dropdown" : "display-none"}>
               <ul>
                 <li>
-                  <img src={profile_pic} />
+                  <img src={profile_pic}  alt="profile"/>
                   <span>{user}</span>
                 </li>
                 <li onClick={handleLogout}>Logout</li>
@@ -177,6 +180,9 @@ const Navbar = (props) => {
           </div>
         )}
       </div>
+
+
+    
     </>
   );
 };
