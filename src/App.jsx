@@ -16,16 +16,14 @@ import WriteBlogs from "./components/WriteBlogs";
 import SingleBlog from "./components/SingleBlog";
 import Carriers from "./components/Carriers";
 import Courses from "./components/Courses";
+import UserProfile from "./components/UserProfile";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() =>
   delay(import("./components/admin/SecureIndex"))
 );
-// const Services = React.lazy(() => delay(import("./components/Services")));
-// const Blogs = React.lazy(() => delay(import("./components/Blogs")));
 
 // delay is an async function which will delay importing of file by 1 seconds
-
 async function delay(promise) {
   await new Promise((resolve) => {
     setTimeout(resolve, 1000);
@@ -33,24 +31,8 @@ async function delay(promise) {
   return promise;
 }
 
+
 const App = () => {
-  // u can do authorization as this or u can just create custom hook by using HOC
-  // function
-
-  // const [auth, setAuth] = useState(false);
-  // const isAuth = () => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     setAuth(true);
-  //   } else if (token === null) {
-  //     setAuth(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   isAuth();
-  // }, []);
-
   const [change, setChange] = useState(false);
 
   return (
@@ -62,36 +44,31 @@ const App = () => {
             {/* unspecified path */}
             <Route path="*" element={<NoPage />} />
             <Route path="/" element={<Index />} />
+            <Route path="/blogs" element={<PersonalBlogs />} />
+            <Route path="/blogs/:_id" element={<SingleBlog />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/carrier" element={<Carriers />} />
+            <Route path="/contact" element={<Contact />} />
+
             <Route path="/signup" element={<SignUp />} />
             <Route
               path="/login"
               element={<Login setChange={setChange} change={change} />}
             />
-           
-            <Route path="/blogs" element={<PersonalBlogs />} />
-            <Route path="/blogs/:_id" element={<SingleBlog />} />
-            <Route path="/courses" element={<Courses/>} />
-            <Route path="/carrier" element={<Carriers />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/user/profile" element={<UserProfile change={change}  />} />
 
-
-
+            {/* admin routes */}
 
             <Route path="/admin/post" element={<WriteBlogs />} />
-          
-            
 
             <Route
-              path="/secureIndex"
+              path="/admin/dashboard"
               element={
                 <Suspense fallback={<Loading />}>
                   <SecureIndex />
                 </Suspense>
               }
             />
-
-            {/* conditional rendering using ternary operator */}
-            {/* <Route path="/secureIndex" element={auth ? <SecureIndex/>:<Login/>}/> */}
           </Routes>
         </div>
 

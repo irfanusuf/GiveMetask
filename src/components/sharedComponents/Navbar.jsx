@@ -52,9 +52,6 @@ const Navbar = (props) => {
 
   return (
     <>
-   
-
-   
       <div className="navbar">
         <div className="menu">
           <TiThMenu onClick={menuOpenClose} />
@@ -108,13 +105,12 @@ const Navbar = (props) => {
           <li>
             <Link to="/contact"> Contact</Link>
           </li>
-        
         </ul>
 
         {user !== "" ? (
           <div className="user">
             <span>
-              <img src={profile_pic} width={"30px"} alt="profile"/>
+              <img src={profile_pic} width={"30px"} alt="profile" />
             </span>
             <p>{user}</p>
 
@@ -128,17 +124,20 @@ const Navbar = (props) => {
                 <hr></hr>
                 <li
                   onClick={() => {
-                    navigate("/secureIndex");
+                    navigate("/user/profile");
                     setShowSettings(false);
                   }}
                 >
-                  Admin-Profile
+                  Profile
                 </li>
 
-
-                <li onClick={()=>{
-                  setShowSettings(false);
-                }}>Settings </li>
+                <li
+                  onClick={() => {
+                    setShowSettings(false);
+                  }}
+                >
+                  Settings{" "}
+                </li>
               </ul>
             </div>
           </div>
@@ -161,11 +160,17 @@ const Navbar = (props) => {
             <div className={showSettings ? "dropdown" : "display-none"}>
               <ul>
                 <li>
-                  <img src={profile_pic}  alt="profile"/>
+                  <img src={profile_pic} alt="profile" />
                   <span>{user}</span>
                 </li>
                 <li onClick={handleLogout}>Logout</li>
-                <li>Profile</li>
+                <li
+                  onClick={() => {
+                    navigate("/user/profile");
+                    setShowSettings(false);
+                  }}>
+                  Profile
+                </li>
                 <li>Settings</li>
               </ul>
             </div>
@@ -180,9 +185,6 @@ const Navbar = (props) => {
           </div>
         )}
       </div>
-
-
-    
     </>
   );
 };
