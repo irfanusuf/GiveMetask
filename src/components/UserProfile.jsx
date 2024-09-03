@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import api from "../utils/AxiosInstance";
-const socket = io("http://localhost:4000");
+const socket = io("https://algoacademy.onrender.com");
 
 const UserProfile = (props) => {
 
