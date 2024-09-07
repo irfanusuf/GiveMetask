@@ -1,0 +1,119 @@
+.user-profile {
+  display: flex;
+}
+
+.profile-left-side {
+  width: 25%;
+  background-color: rgb(21, 7, 54);
+  display: flex;
+  padding: 3%;
+
+  > .profile-card {
+    width: 380px;
+    background-color: aliceblue;
+    height: 600px;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+
+    > img {
+      border-radius: 100%;
+      width: 100px;
+      height: 100px;
+    }
+
+    > h3 {
+      margin: 10px;
+    }
+
+    > h4 {
+      margin: 10px;
+      color: rgb(68, 67, 67);
+    }
+
+    > .btns {
+      margin-top: 20px;
+      > button {
+        margin-right: 10px;
+      }
+    }
+
+    > .profile-links {
+      margin-top: 30px;
+      width: 300px;
+
+      > div {
+        margin-top: 20px;    
+      }
+    }
+  }
+}
+
+.profile-right-side {
+  width: 75%;
+  background-color: rgb(21, 7, 54);
+  height: 90vh;
+  padding: 3%;
+
+  > .progress-details {
+    background-color: aliceblue;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    border-radius: 10px;
+
+    > .progress-details-left {
+      background-color: bisque;
+      width: 40%;
+      padding: 3%;
+    }
+
+    > .progress-details-right {
+      background-color: bisque;
+      width: 40%;
+      padding: 3%;
+    }
+  }
+
+  > .class-details {
+    background-color: aliceblue;
+    margin-top: 30px;
+    min-height: 30%;
+    padding: 1%;
+    border-radius: 10px;
+
+    > .detail-list {
+      background-color: bisque;
+      padding: 3%;
+      > h1 {
+        margin: 0px 0 40px 0;
+      }
+
+      > .heading {
+        display: flex;
+        justify-content: space-between;
+        > .first {
+          text-align: left;
+          width: 36%;
+        }
+        > span {
+          width: 30%;
+          text-align: right;
+        }
+      }
+
+      > .single-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > span {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+}

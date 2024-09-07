@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import Home from "./sharedComponents/Home";
+import Home from "../sharedComponents/Home";
 import "./Index.scss";
 // import HomeCards from "./sharedComponents/HomeCards";
 
 
-import WhyAlgo from "./molecules/WhyAlgo";
-import Roadway from "./molecules/Roadway";
+import WhyAlgo from "../molecules/WhyAlgo";
+import Roadway from "../molecules/Roadway";
 
 const Index = () => {
   useEffect(() => {

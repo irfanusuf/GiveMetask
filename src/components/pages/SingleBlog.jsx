@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Home from "./sharedComponents/Home";
+import Home from "../sharedComponents/Home";
 import "./Singleblog.scss";
 import { toast, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";

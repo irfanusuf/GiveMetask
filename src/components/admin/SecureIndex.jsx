@@ -1,6 +1,6 @@
 import React from "react";
 import "./SecureIndex.scss";
-import Authorized from "../../authorization/Authorized";
+import Authorized from "../authorization/Authorized";
 
 const SecureIndex = () => {
   Authorized();

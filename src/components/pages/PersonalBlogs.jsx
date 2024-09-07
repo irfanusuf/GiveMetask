@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Home from "./sharedComponents/Home";
+import Home from "../sharedComponents/Home";
 import "./PersonalBlogs.scss";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import api from "../utils/AxiosInstance";
+import api from "../utils/AxiosInstance"
 
 const PersonalBlogs = () => {
   const [posts, setPosts] = useState([]);

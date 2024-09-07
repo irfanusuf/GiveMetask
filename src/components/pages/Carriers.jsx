@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Carriers.scss";
 import Authorized from "../authorization/Authorized";
-import Home from "./sharedComponents/Home";
+import Home from "../sharedComponents/Home";
 
 const Carriers = () => {
   // frontend logic

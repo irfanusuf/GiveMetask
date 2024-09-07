@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import api from "../utils/AxiosInstance";
+
 const socket = io("https://algoacademy.onrender.com");
 
-const UserProfile = (props) => {
+const InteractPanel = (props) => {
 
 
 
@@ -98,4 +99,4 @@ const UserProfile = (props) => {
     );
 };
 
-export default UserProfile;
+export default InteractPanel;

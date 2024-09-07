@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/web Title with logo.svg";
-import api from "../../utils/AxiosInstance";
+import api from "../utils/AxiosInstance";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { HiDotsVertical } from "react-icons/hi";

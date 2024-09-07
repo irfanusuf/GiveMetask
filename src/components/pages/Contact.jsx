@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './Contact.scss'
-import Home from './sharedComponents/Home'
+import Home from '../sharedComponents/Home'
 
 const Contact = (props) => {
 

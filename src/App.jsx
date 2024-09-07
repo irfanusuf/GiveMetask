@@ -5,18 +5,24 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // local imports or  // static import
 import Navbar from "./components/sharedComponents/Navbar";
 import Footer from "./components/sharedComponents/Footer";
-import Contact from "./components/Contact";
+
 import NoPage from "./components/sharedComponents/NoPage";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
 import Loading from "./components/sharedComponents/Loading";
-import Index from "./components/Index";
-import PersonalBlogs from "./components/PersonalBlogs";
-import WriteBlogs from "./components/WriteBlogs";
-import SingleBlog from "./components/SingleBlog";
-import Carriers from "./components/Carriers";
-import Courses from "./components/Courses";
-import UserProfile from "./components/UserProfile";
+
+
+import Index from "./components/pages/Index"
+import PersonalBlogs from "./components/pages/PersonalBlogs";
+import WriteBlogs from "./components/pages/WriteBlogs";
+import SingleBlog from "./components/pages/SingleBlog";
+import Carriers from "./components/pages/Carriers";
+import Courses from "./components/pages/Courses";
+import SignUp from "./components/pages/SignUp";
+import Login from "./components/pages/Login";
+import Contact from "./components/pages/Contact";
+
+
+import UserProfile from "./components/user/UserProfile";
+
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() =>
