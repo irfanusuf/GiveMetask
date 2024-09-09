@@ -7,7 +7,7 @@
   justify-content: center;
   background-color: #130420;
   transform: translateY(-60px);
-  border-radius: 80px;
+  border-radius: 50px;
   color: aliceblue;
 
   //   > img {
@@ -32,15 +32,14 @@
  > .card-wrapper {
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 80%;
     justify-content: space-between;
     color: aliceblue;
     padding-bottom: 50px;
   
     > .why-card {
       width: 400px;
-      margin: auto;
-      margin-top: 30px;
+      margin-top: 50px;
       
   
       .card-img {
@@ -53,7 +52,7 @@
       }
   
       > h3 {
-        font-size: 22px;
+        font-size: 24px;
         color: orange;
         text-align: center;
         line-height: 1.5;

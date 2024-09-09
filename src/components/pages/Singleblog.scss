@@ -1,25 +1,143 @@
 
 .title {
-    width: 70%;
+    width: 60%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 50px;
+    >h1{
+      font-size: calc(1rem + 2vw);
+    }
   }
   
+  .main-content{
 
+    width: 60%;
+    margin: auto;
+    margin-bottom: 60px;
+  }
   
   .interactivity{
-    width: 70%;
+    width: 60%;
     margin: auto;
     margin-bottom: 50px;
-    >span{
-      font-size: 28px;
-      margin-right: 10px;
+
+    display: flex;
+    justify-content: space-between;
+
+
+    >.icons{
+
+      >span{
+        font-size: 20px;
+        margin-right: 20px;
+      }
+    }
+    >.comments{
+
+      >input{
+        width: 20vw;
+        padding: 5px 10px;
+        margin-right: 10px;
+        border: none;
+        border-bottom: 1px solid black ;
+        font-size: 17px;
+        color: #666;
+      }
+
+      >button{
+        font-size: 18px;
+        color: black;
+        &:hover{
+          opacity: 0.7 ;
+        }
+     
+      }
+
+    }
+
+   
+  }
+
+  .comment-section{
+
+    width: 60%;
+    margin: auto;
+
+
+    >.comments{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50vh;
+
+      >h3{
+        color: grey;
+      }
     }
   }
   
   
+
+
+
+  @media screen and (max-width: 900px) {
+
+    .title {
+      width: 90%;
+      flex-direction: column ;
+    
+    }
+
+
+    .main-content{
+      width: 90%;
+
+    }
+
+
+
+    .interactivity{
+
+      width: 90%;
+      flex-direction: column;
+
+
+      >.comments{
+
+
+        margin-top: 20px;
+
+        >input{
+          width: 50vw;
+        }
+      }
+
+    }
+
+
+    .comment-section{
+      width: 90%;
+    }
+    
+  
+  }
+
+
+
+
+
+
+
+
+
+.ck-content{
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  // letter-spacing: 0.5px;
+  // word-spacing: 1px;
+  font-size: larger;
+}
 
 
   
@@ -105,15 +223,5 @@
 
 
 
-  @media screen and (max-width: 900px) {
 
-    .title {
-      width: 90%;
-      flex-direction: column ;
-      align-items: left;
-      justify-content: left;
-    }
-    
-  
-  }
   

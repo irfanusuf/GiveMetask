@@ -1,5 +1,5 @@
 // from node modules
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
@@ -9,8 +9,7 @@ import Footer from "./components/sharedComponents/Footer";
 import NoPage from "./components/sharedComponents/NoPage";
 import Loading from "./components/sharedComponents/Loading";
 
-
-import Index from "./components/pages/Index"
+import Index from "./components/pages/Index";
 import PersonalBlogs from "./components/pages/PersonalBlogs";
 import WriteBlogs from "./components/pages/WriteBlogs";
 import SingleBlog from "./components/pages/SingleBlog";
@@ -20,9 +19,8 @@ import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/Contact";
 
-
 import UserProfile from "./components/user/UserProfile";
-
+import api from "./components/utils/AxiosInstance";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() =>
@@ -37,14 +35,27 @@ async function delay(promise) {
   return promise;
 }
 
-
 const App = () => {
   const [change, setChange] = useState(false);
+  const [user, setUser] = useState("");
+
+  const getUserData = async () => {
+    try {
+      const res = await api.get(`/user/getUser`);
+      setUser(res.data.email);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [change]);
 
   return (
     <>
       <BrowserRouter>
-        <Navbar change={change} setChange={setChange} />
+        <Navbar user={user} />
         <div className="main">
           <Routes>
             {/* unspecified path */}
@@ -61,7 +72,7 @@ const App = () => {
               path="/login"
               element={<Login setChange={setChange} change={change} />}
             />
-            <Route path="/user/profile" element={<UserProfile change={change}  />} />
+            <Route path="/user/profile" element={<UserProfile />} />
 
             {/* admin routes */}
 
@@ -71,7 +82,7 @@ const App = () => {
               path="/admin/dashboard"
               element={
                 <Suspense fallback={<Loading />}>
-                  <SecureIndex />
+                  <SecureIndex user={user} />
                 </Suspense>
               }
             />

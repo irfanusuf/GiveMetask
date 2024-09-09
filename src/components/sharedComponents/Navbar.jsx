@@ -9,8 +9,8 @@ import { HiDotsVertical } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import profile_pic from "../../assets/bg.jpg";
 
-const Navbar = (props) => {
-  const [user, setUser] = useState("");
+const Navbar = ({user }) => {
+ 
   const [showMenu, setShowMenu] = useState(false);
 
   const [showSettings, setShowSettings] = useState(false);
@@ -37,18 +37,8 @@ const Navbar = (props) => {
     }, 5000);
   }
 
-  const getUserData = async () => {
-    try {
-      const res = await api.get(`/user/getUser`);
-      setUser(res.data.email);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    getUserData();
-  }, [props.change]);
+ 
 
   return (
     <>

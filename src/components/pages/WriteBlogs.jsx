@@ -30,18 +30,17 @@ const WriteBlogs = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      if(title === ""){
-        return toast.error("Title Required!")
+      if (title === "") {
+        return toast.error("Title Required!");
       }
       const res = await api.post(`/post/createPost`, formData);
-      toast.success(res.data.message); 
+      toast.success(res.data.message);
       console.log(res);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.log(error);
-    }
-    finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,16 +59,11 @@ const WriteBlogs = () => {
 
         formData.append("image", image);
 
-
-        const response = await api.post(
-          `/post/upload/image`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const response = await api.post(`/post/upload/image`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
         return { default: response.data.url };
       } catch (error) {
@@ -89,104 +83,54 @@ const WriteBlogs = () => {
   }
 
   return (
-
     <>
-    
-  <ToastContainer/>
+      <ToastContainer />
 
+      <div className="create-blog">
+        <form>
+          <h1>WriteBlogs </h1>
+          <input
+            placeholder="Enter Your title "
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
 
-    <div className="create-blog">
-      <form>
-        <h1>WriteBlogs </h1>
-        <input
-          placeholder="Enter Your title "
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
+          <input
+            type="file"
+            placeholder="Choose Your image"
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
+          />
+        </form>
+
+        <CKEditor
+          editor={ClassicEditor}
+          config={{
+            extraPlugins: [customPlugin],
+            toolbar: [
+              "heading",
+              "|",
+              "bold",
+              "italic",
+              "link",
+              "bulletedList",
+              "numberedList",
+              "blockQuote",
+              "imageUpload",
+            ],
           }}
+          data="<p>Write your blog content here...</p>"
+          onChange={handleEditorChange}
         />
-
-        <input
-          type="file"
-          placeholder="Choose Your image"
-          onChange={(e) => {
-            setImage(e.target.files[0]);
-          }}
-        />
-      </form>
-
-      <CKEditor
-        editor={ClassicEditor}
-        config={{
-          extraPlugins: [customPlugin],
-          toolbar: [
-            "heading",
-            "|",
-            "bold",
-            "italic",
-            "link",
-            "bulletedList",
-            "numberedList",
-            "blockQuote",
-            "imageUpload",
-          ],
-        }}
-        data="<p>Write your blog content here...</p>"
-        onChange={handleEditorChange}
-      />
-      <button onClick={handleSubmit} disabled={loading}>{loading ? "upload..." : "upload" }</button>
-    </div>
+        <button onClick={handleSubmit} disabled={loading}>
+          {loading ? "upload..." : "upload"}
+        </button>
+      </div>
     </>
   );
 };
 
 export default WriteBlogs;
-
-/* <textarea
-placeholder="Enter Your Description "
-value={description}
-onChange={(e) => {
-  setDescription(e.target.value);
-}}
->
-{" "}
-</textarea> */
-
-// function customPlugin(editor) {
-//   editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-//     return new Upload(loader);
-//   };
-// }
-
-// class Upload {
-//   constructor(loader) {
-//     this.loader = loader;
-//   }
-
-//   async upload() {
-//     try {
-//       const file = await this.loader.file;
-//       const formData = new FormData();
-//       formData.append("upload", file);
-
-//       const response = await axios.post(
-//         "http://localhost:5000/api/upload",
-//         formData,
-//         {
-//           headers: {
-//             "Content-Type": "multipart/form-data",
-//           },
-//         }
-//       );
-
-//       return { default: response.data.url };
-//     } catch (error) {
-//       console.error("Error uploading file:", error);
-//       throw error;
-//     }
-//   }
-
-//   abort() {
-//     // Handle aborting the upload process if necessary
-//   }
-// }
