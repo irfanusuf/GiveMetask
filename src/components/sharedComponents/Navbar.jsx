@@ -9,18 +9,11 @@ import { HiDotsVertical } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import profile_pic from "../../assets/bg.jpg";
 
-const Navbar = ({user }) => {
- 
-  const [showMenu, setShowMenu] = useState(false);
-
+const Navbar = ({ user, menuOpenClose, setShowMenu, showMenu }) => {
   const [showSettings, setShowSettings] = useState(false);
   const [logoutMessage, setlogoutMessage] = useState("");
 
   const navigate = useNavigate();
-
-  function menuOpenClose() {
-    setShowMenu(!showMenu);
-  }
 
   function opencloseSettings() {
     setShowSettings(!showSettings);
@@ -37,13 +30,15 @@ const Navbar = ({user }) => {
     }, 5000);
   }
 
-
- 
-
   return (
     <>
       <div className="navbar">
-        <div className="menu">
+        <div
+          className="menu"
+          onClick={() => {
+            setShowSettings(false);
+          }}
+        >
           <TiThMenu onClick={menuOpenClose} />
 
           <div
@@ -57,19 +52,19 @@ const Navbar = ({user }) => {
               <IoClose onClick={menuOpenClose} />
             </div>
             <ul>
-              <li>
+              <li onClick={menuOpenClose}>
                 <Link to="/"> Home</Link>
               </li>
-              <li>
+              <li onClick={menuOpenClose}>
                 <Link to="/blogs"> Blogs</Link>
               </li>
-              <li>
+              <li onClick={menuOpenClose}>
                 <Link to="/courses"> Courses</Link>
               </li>
-              <li>
-                <Link to="/carrier"> Carrier</Link>
+              <li onClick={menuOpenClose}>
+                <Link to="/carrier"> Carrers</Link>
               </li>
-              <li>
+              <li onClick={menuOpenClose}>
                 <Link to="/contact"> Contact</Link>
               </li>
             </ul>
@@ -90,7 +85,7 @@ const Navbar = ({user }) => {
             <Link to="/courses"> Courses</Link>
           </li>
           <li>
-            <Link to="/carrier"> Carriers</Link>
+            <Link to="/carrier"> Carrers</Link>
           </li>
           <li>
             <Link to="/contact"> Contact</Link>
@@ -98,15 +93,13 @@ const Navbar = ({user }) => {
         </ul>
 
         {user !== "" ? (
-          <div className="user">
+          <div className="user" onClick={opencloseSettings}>
             <span>
               <img src={profile_pic} width={"30px"} alt="profile" />
             </span>
             <p>{user}</p>
 
-            <div onClick={opencloseSettings}>
-              {showSettings ? <IoClose /> : <IoIosArrowDropdown />}
-            </div>
+            <div>{showSettings ? <IoClose /> : <IoIosArrowDropdown />}</div>
 
             <div className={showSettings ? "dropdown" : "display-none"}>
               <ul>
@@ -115,19 +108,12 @@ const Navbar = ({user }) => {
                 <li
                   onClick={() => {
                     navigate("/user/profile");
-                    setShowSettings(false);
                   }}
                 >
                   Profile
                 </li>
 
-                <li
-                  onClick={() => {
-                    setShowSettings(false);
-                  }}
-                >
-                  Settings{" "}
-                </li>
+                <li>Settings</li>
               </ul>
             </div>
           </div>
@@ -142,10 +128,8 @@ const Navbar = ({user }) => {
         )}
 
         {user !== "" ? (
-          <div className="triple-dot">
-            <div onClick={opencloseSettings}>
-              {showSettings ? <IoClose /> : <HiDotsVertical />}
-            </div>
+          <div className="triple-dot" onClick={opencloseSettings}>
+            <div>{showSettings ? <IoClose /> : <HiDotsVertical />}</div>
 
             <div className={showSettings ? "dropdown" : "display-none"}>
               <ul>
@@ -157,8 +141,8 @@ const Navbar = ({user }) => {
                 <li
                   onClick={() => {
                     navigate("/user/profile");
-                    setShowSettings(false);
-                  }}>
+                  }}
+                >
                   Profile
                 </li>
                 <li>Settings</li>

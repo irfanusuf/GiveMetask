@@ -32,26 +32,41 @@ const Footer = () => {
 
           <ul>
             <li>
-              <img src={facebook} alt="logo" /> facebook
+              <img src={facebook} alt="logo" />{" "}
+              <a
+                href="https://www.instagram.com/algoacademyofficial/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Facebook
+              </a>
             </li>
             <li>
-              <img src={instagram} alt="logo" /> Instagram
+              <img src={instagram} alt="logo" />{" "}
+              <a
+                href="https://www.instagram.com/algoacademyofficial/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
             </li>
             <li>
-              <img src={linkedIn} alt="logo" /> LinkedIn
+              <img src={linkedIn} alt="logo" />{" "}
+              <a
+                href="https://www.linkedin.com/company/algo-academy-io"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
             </li>
           </ul>
         </div>
 
-       
-
         <div className="legal">
-          
-          <h3>
-          Legal Information
-          </h3>
+          <h3>Legal Information</h3>
           <ul>
-          
             <li>
               <Link to={"/privacy-policy"}>Privacy Policy</Link>
             </li>
@@ -62,20 +77,15 @@ const Footer = () => {
               <Link to={"/carriers"}>User Agreement and Cookie Policy</Link>
             </li>
           </ul>
-          
-
-
         </div>
         <div className="subscription">
           <h3>Subscription</h3>
           <h2>Stay Connected !</h2>
           <form>
-           
-            <input placeholder="Subscribe to Our NewsLetter!" type="email"/>
+            <input placeholder="Subscribe to Our NewsLetter!" type="email" />
             <button>Subscribe</button>
           </form>
         </div>
-
       </div>
 
       <div className="footer-2">

@@ -1,5 +1,5 @@
 // from node modules
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
@@ -21,6 +21,7 @@ import Contact from "./components/pages/Contact";
 
 import UserProfile from "./components/user/UserProfile";
 import api from "./components/utils/AxiosInstance";
+import CompanyPolicy from "./components/pages/CompanyPolicy";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() =>
@@ -36,8 +37,14 @@ async function delay(promise) {
 }
 
 const App = () => {
+  const Context = createContext();
   const [change, setChange] = useState(false);
   const [user, setUser] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
+
+  function menuOpenClose() {
+    setShowMenu(!showMenu);
+  }
 
   const getUserData = async () => {
     try {
@@ -55,19 +62,37 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar user={user} />
-        <div className="main">
+        <Navbar
+          user={user}
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          menuOpenClose={menuOpenClose}
+        />
+
+        <div className="main" onClick={()=>{setShowMenu(false)}}>
           <Routes>
             {/* unspecified path */}
+
             <Route path="*" element={<NoPage />} />
-            <Route path="/" element={<Index />} />
+
+            <Route
+              path="/"
+              element={
+                <Context.Provider value={user}>
+                  <Index />
+                </Context.Provider>
+              }
+            />
+
             <Route path="/blogs" element={<PersonalBlogs />} />
             <Route path="/blogs/:_id" element={<SingleBlog />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/carrier" element={<Carriers />} />
             <Route path="/contact" element={<Contact />} />
-
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/company-policy" element={<CompanyPolicy />} />
+          
+
             <Route
               path="/login"
               element={<Login setChange={setChange} change={change} />}

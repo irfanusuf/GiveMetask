@@ -32,12 +32,10 @@ const PersonalBlogs = () => {
     }
   };
 
-  // useEffect(() => {
-
-  //
-  // }, []);
 
   useEffect(() => {
+
+    document.title = "ALGO ACADEMY | Blogs";
     const scrollPosition = sessionStorage.getItem("scrollPosition");
     if (scrollPosition > 0) {
       window.scrollTo(0, parseInt(scrollPosition));
