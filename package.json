@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^43.0.0",
-    "@ckeditor/ckeditor5-react": "^9.0.0",
+
+    "@ckeditor/ckeditor5-react": "^8.0.0",
     "animate.css": "^4.1.1",
     "axios": "^1.7.2",
+    "ckeditor5": "43.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",

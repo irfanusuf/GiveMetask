@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const CompanyPolicy = () => {
+
+useEffect(()=>{
+
+document.title  = "ALGO ACADEMY | Company policy"
+
+})
+
+
   return (
     <div style={{ width: "60%", margin: " 100px auto"  }}>
       <div>

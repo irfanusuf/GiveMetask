@@ -18,10 +18,10 @@ import Courses from "./components/pages/Courses";
 import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/Contact";
-
 import UserProfile from "./components/user/UserProfile";
 import api from "./components/utils/AxiosInstance";
 import CompanyPolicy from "./components/pages/CompanyPolicy";
+import Ck from "./components/molecules/CkEditor";
 
 // lazy import or // dynamic import
 const SecureIndex = React.lazy(() =>
@@ -100,8 +100,8 @@ const App = () => {
             <Route path="/user/profile" element={<UserProfile />} />
 
             {/* admin routes */}
-
-            <Route path="/admin/post" element={<WriteBlogs />} />
+            
+            <Route path="/admin/post" element={<Ck />} />
 
             <Route
               path="/admin/dashboard"
@@ -121,3 +121,9 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+  // "@ckeditor/ckeditor5-build-classic": "^43.0.0",
+    // "@ckeditor/ckeditor5-react": "^9.0.0",
