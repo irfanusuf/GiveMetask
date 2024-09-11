@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Home from "../sharedComponents/Home";
 import "./Singleblog.scss";
 import { toast, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
@@ -8,16 +7,18 @@ import { FaComments } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import api from "../utils/AxiosInstance";
 
-const SingleBlog = () => {
+const SingleBlog = ({userid}) => {
   const { _id } = useParams();
+
 
   const [data, setData] = useState({
     title: "",
     imageUrl: "",
     author: "",
     content: "",
+    likes : []
   });
-  const [like, setLike] = useState(false);
+  
 
   const fetchSingleBlog = async () => {
     try {
@@ -31,10 +32,9 @@ const SingleBlog = () => {
 
   const handleLike = async () => {
     try {
-      setLike(!like);
-
-      const res = await api.put(`/post/pushLike/${_id}`);
-      console.log(res);
+      
+      await api.put(`/post/pushLike/${_id}`);
+      fetchSingleBlog()
     } catch (error) {
       console.log(error);
     }
@@ -45,22 +45,13 @@ const SingleBlog = () => {
 
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     fetchSingleBlog();
-  }, [_id]);
+  });
 
   return (
     <>
       <ToastContainer />
-      {/* <Home
-        subheading={"Personal Blogs"}
-        para={
-          "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae, ratione. Sunt error voluptatem, iure quo, at ipsam alias quisquam fuga ex pariatur commodi corporis eos dignissimos. Natus temporibus earum expedita."
-        }
-        punch1={""}
-        punch2={""}
-        punch3={""}
-      /> */}
 
       <div className="title">
         <h1>{data.title}</h1>
@@ -77,10 +68,15 @@ const SingleBlog = () => {
       <div className="interactivity">
         <div className="icons">
           <span onClick={handleLike}>
-            {like ? <FaHeart style={{ color: "red" }} /> : <FaHeart />}
+            {data &&
+            data.likes.findIndex(
+              (element) => element.user.toString() === userid
+            ) > -1 ? (
+              <FaHeart style={{ color: "red" }} />
+            ) : (
+              <FaHeart />
+            )}
           </span>
-
-          {/* <span>{data.likes.length}</span> */}
 
           <span>
             <FaComments />
@@ -90,28 +86,28 @@ const SingleBlog = () => {
           </span>
         </div>
 
-        <div className="comments">
+        <div className="icons-count">
+          <span>{data.likes.length}</span>
+          <span>{data.likes.length}</span>
+          <span>{data.likes.length}</span>
+        </div>
+      </div>
+
+      <div className="comment-section">
+
+        <div className="comment-input">
           <input placeholder=" Comment..." />
 
           <button> Comment </button>
         </div>
-      </div>
 
-        <div className="comment-section">
+        <h1> Comments </h1>
 
-          <h1> Comments </h1>
-
-
-          <div className="comments">
-
-            <h3> No Comments yet </h3>
-
-          </div>
-
+        <div className="comments">
+          <h3> No Comments yet </h3>
         </div>
 
-
-
+      </div>
     </>
   );
 };

@@ -39,7 +39,11 @@ async function delay(promise) {
 const App = () => {
   const Context = createContext();
   const [change, setChange] = useState(false);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({
+    email : "",
+    id : "",
+    message : ""
+  });
   const [showMenu, setShowMenu] = useState(false);
 
   function menuOpenClose() {
@@ -49,7 +53,7 @@ const App = () => {
   const getUserData = async () => {
     try {
       const res = await api.get(`/user/getUser`);
-      setUser(res.data.email);
+      setUser(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +67,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Navbar
-          user={user}
+          user={user.email}
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           menuOpenClose={menuOpenClose}
@@ -78,14 +82,14 @@ const App = () => {
             <Route
               path="/"
               element={
-                <Context.Provider value={user}>
+                <Context.Provider value={user.email}>
                   <Index />
                 </Context.Provider>
               }
             />
 
             <Route path="/blogs" element={<PersonalBlogs />} />
-            <Route path="/blogs/:_id" element={<SingleBlog />} />
+            <Route path="/blogs/:_id" element={<SingleBlog userid ={user.id} />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/carrier" element={<Carriers />} />
             <Route path="/contact" element={<Contact />} />
@@ -107,7 +111,7 @@ const App = () => {
               path="/admin/dashboard"
               element={
                 <Suspense fallback={<Loading />}>
-                  <SecureIndex user={user} />
+                  <SecureIndex user={user.email} />
                 </Suspense>
               }
             />
