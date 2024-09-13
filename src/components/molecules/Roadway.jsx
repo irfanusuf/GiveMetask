@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import itman from "../../assets/itman.webp"
-import Context from "../../App"
+import { Context } from '../../App'
+
 
 const Roadway = () => {
 
@@ -12,20 +13,14 @@ const Roadway = () => {
     <div className='roadway'>
 
        <div className='roadway-left'>
-
         <img src= {itman} alt="It-man"/>
-
-
        </div>
 
 
-
        <div className='roadway-right'>
-
         <h1>
         Your Roadmap to Success
         </h1>
-
 
         <h3><span>1.</span>Create Your Account</h3>
         <h3><span>2.</span>Choose Your Plan and make payment if needed</h3>

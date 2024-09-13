@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./SecureIndex.scss";
 import { MyAppContext } from "../../context/Store";
+import LiveClass from "./LiveClass";
+// import LiveVideo from "./LiveVideo";
 
 // import Authorized from "../authorization/Authorized";
 
@@ -26,6 +28,9 @@ const SecureIndex = () => {
     hasSub: false,
     forgotPassReq: false,
   });
+
+
+  // setUserData()
 
   // const admin = "irfanusuf33@gmail.com";
 
@@ -74,7 +79,14 @@ const SecureIndex = () => {
       click for theme test
     </button>
 
+
+
+
+
+   
+
       </div>
+      {/* <LiveClass/> */}
     </>
   );
 };
