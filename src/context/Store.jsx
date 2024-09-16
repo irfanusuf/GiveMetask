@@ -3,7 +3,7 @@ import initialState from "./IntialState";
 import Reducer from "./Reducer";
 
 
-const AppContext = createContext();
+const Context = createContext();
 
 
 export const Provider = ({ children }) => {
@@ -11,10 +11,15 @@ export const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(Reducer, initialState);
 
     return (
-        <AppContext.Provider value={{ state, dispatch }}>
+        <Context.Provider value={{ state, dispatch }}>
             {children}
-        </AppContext.Provider>
+        </Context.Provider>
     );
 };
 
-export const MyAppContext = () => useContext(AppContext);
+
+//custom hook 
+export const useDispatch = () => useContext(Context);
+
+
+

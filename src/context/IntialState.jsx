@@ -1,7 +1,7 @@
 // initial state
 const initialState = {
     user: null,
-    theme: 'light',
+    theme: 'dark',
     userData : {}
 };
 

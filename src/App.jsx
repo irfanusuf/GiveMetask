@@ -1,5 +1,5 @@
 // from node modules
-import React, { Suspense, useEffect, useState, createContext } from "react";
+import React, { Suspense, useEffect, useState} from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // local imports or  // static import
@@ -39,7 +39,6 @@ async function delay(promise) {
   return promise;
 }
 
-export const Context = createContext();
 
 const App = () => {
 
@@ -84,15 +83,7 @@ const App = () => {
 
             <Route path="*" element={<NoPage />} />
 
-            <Route
-              path="/"
-              element={
-                <Context.Provider value={user.email}>
-                  <Index />
-                </Context.Provider>
-              }
-            />
-
+            <Route path="/" element={<Index />}/>
             <Route path="/blogs" element={<PersonalBlogs />} />
             <Route path="/blogs/:_id" element={<SingleBlog userid ={user.id} />} />
             <Route path="/courses" element={<Courses />} />

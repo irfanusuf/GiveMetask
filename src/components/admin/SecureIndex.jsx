@@ -1,24 +1,15 @@
 import React, { useState } from "react";
 import "./SecureIndex.scss";
-import { MyAppContext } from "../../context/Store";
-import LiveClass from "./LiveClass";
+// import LiveClass from "./LiveClass";
+import { useDispatch } from "../../context/Store";
 // import LiveVideo from "./LiveVideo";
 
 // import Authorized from "../authorization/Authorized";
 
 const SecureIndex = () => {
 
-
-  const { state, dispatch } = MyAppContext();
+  const { state, dispatch } = useDispatch();
   const { user, theme } = state;
-
-  const handleLogin = () => {
-      dispatch({ type: 'SET_USER', payload: { name: 'John Doe' } });
-  };
-
-  const toggleTheme = () => {
-      dispatch({ type: 'TOGGLE_THEME' });
-  };
 
  
   // const checkAuth = Authorized();
@@ -30,26 +21,10 @@ const SecureIndex = () => {
   });
 
 
-  // setUserData()
-
-  // const admin = "irfanusuf33@gmail.com";
-
-  // if (user !== admin)
-  //   return (
-  //     <div className="secure-index">
-  //       <h1>No Acesss!</h1>
-  //       <p>Access Denied !</p>
-  //       <p> Kindly login With Admin email</p>
-  //     </div>
-  //   );
-
- 
   return (
     <>
       <div className="admin-panel">
-        <h3> Admin : <i>{user && user.name}</i></h3>
-        <h3> Theme : <i>{theme && theme}</i></h3>
-        <h1> Total users </h1>
+       
 
         <table>
           <thead>
@@ -71,20 +46,7 @@ const SecureIndex = () => {
           </tbody>
         </table>
 
-    <button onClick={handleLogin}>
-      click for test
-    </button>
-
-    <button onClick={toggleTheme}>
-      click for theme test
-    </button>
-
-
-
-
-
-   
-
+  
       </div>
       {/* <LiveClass/> */}
     </>

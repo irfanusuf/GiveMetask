@@ -1,13 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import itman from "../../assets/itman.webp"
-import { Context } from '../../App'
 
 
 const Roadway = () => {
-
- const user =  useContext(Context)
-
- console.log(user)
 
   return (
     <div className='roadway'>
@@ -28,9 +23,7 @@ const Roadway = () => {
         <h3><span>4.</span> Join Daily Virtual Classes</h3>
         <h3><span>5.</span> Track Your Progress </h3>
         <h3><span>6.</span> further.......developing </h3>
-        <h3><span>6.</span> Developed by : {user}</h3>
 
-      
        </div>
 
     </div>
