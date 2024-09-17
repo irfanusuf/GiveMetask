@@ -12,7 +12,7 @@ const Authorized = () => {
         if (res.data.message === "tokenNotVerfied") {
           navigate("/login");
           return false;
-        } else if (res.data.message === "verified") {
+        } else if (res.data.message === "adminVerified") {
           return true;
         }
     

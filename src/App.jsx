@@ -23,7 +23,7 @@ import CompanyPolicy from "./components/pages/CompanyPolicy";
 import Ck from "./components/molecules/CkEditor";
 import LiveClass from "./components/user/LiveClass";
 import { useDispatch } from "./context/Store";
-import { getUser } from "./context/ReducerFunctions";
+import { getAllPosts, getAllUsers, getUser } from "./context/ReducerFunctions";
 import LiveVideo from "./components/admin/LiveVideo";
 // import LiveClass from "./components/admin/LiveClass"
 
@@ -43,11 +43,8 @@ async function delay(promise) {
 
 
 const App = () => {
-
-  const [change, setChange] = useState(false);
-
   const {state , dispatch} = useDispatch()
-
+  const [change, setChange] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
   function menuOpenClose() {
@@ -56,6 +53,8 @@ const App = () => {
 
   useEffect(() => {
    getUser(dispatch)
+   getAllPosts(dispatch)
+   getAllUsers(dispatch)
   }, [change , dispatch]);
 
   return (

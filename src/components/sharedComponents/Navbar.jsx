@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/web Title with logo.svg";
-import api from "../utils/AxiosInstance";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { HiDotsVertical } from "react-icons/hi";
@@ -113,7 +112,10 @@ const Navbar = ({ user, menuOpenClose, setShowMenu, showMenu }) => {
                   Profile
                 </li>
 
-                <li>Settings</li>
+                <li   
+                  onClick={() => {
+                    navigate("/admin/dashboard");
+                  }}>Admin</li>
               </ul>
             </div>
           </div>
@@ -145,7 +147,10 @@ const Navbar = ({ user, menuOpenClose, setShowMenu, showMenu }) => {
                 >
                   Profile
                 </li>
-                <li>Settings</li>
+                <li   
+                  onClick={() => {
+                    navigate("/admin/dashboard");
+                  }}>Admin</li>
               </ul>
             </div>
           </div>

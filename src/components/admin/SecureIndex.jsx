@@ -1,25 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./SecureIndex.scss";
-// import LiveClass from "./LiveClass";
 import { useDispatch } from "../../context/Store";
-import { getAllUsers } from "../../context/ReducerFunctions";
-// import LiveVideo from "./LiveVideo";
 
-// import Authorized from "../authorization/Authorized";
+// import LiveVideo from "./LiveVideo";
+// import LiveClass from "./LiveClass";
+import Authorized from "../authorization/Authorized";
 
 const SecureIndex = () => {
-  const { state, dispatch } = useDispatch();
+  const { state} = useDispatch();
+
+  const checkAuth = Authorized()
+  
+  
 
   useEffect(() => {
-    getAllUsers(dispatch);
-  }, [dispatch]);
+    (async () => {
+      const isAuth = await checkAuth();
+    
+    })();
+    document.title = "ALGO ACADEMY | admin panel";
+  }, [checkAuth]);
 
-  // const checkAuth = Authorized();
+
+
+
 
   return (
     <>
       <div className="admin-panel">
-        Admin : {state.userData.email}
+
+        <h3>
+                  Admin : {state.userData.email}
+        </h3>
+
+
+
+<h1> All Users </h1>
+
         <table>
           <thead>
             <tr>
@@ -32,7 +49,7 @@ const SecureIndex = () => {
 
           <tbody>
             {state.users.map((user) => (
-              <tr>
+              <tr key={user._id}>
                 <td>{user.username} </td>
                 <td>{user.email} </td>
                 <td>false</td>
@@ -41,7 +58,47 @@ const SecureIndex = () => {
             ))}
           </tbody>
         </table>
+
+
+
+<h1> All Posts </h1>
+
+        <table>
+          <thead>
+            <tr> 
+              <th>Name </th>
+              <th>Author </th>
+              <th> Action</th>
+        
+            </tr>
+          </thead>
+
+          <tbody>
+            {state.posts  && state.posts.map((post) => (
+              <tr key={post._id}>
+                <td>{post.title} </td>
+                <td>{post.author} </td>
+                <td>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </td>
+             
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+
+
+
+
+
       </div>
+
+
+
+
+
       {/* <LiveClass/> */}
     </>
   );

@@ -3,7 +3,6 @@ import Home from "../sharedComponents/Home";
 import "./PersonalBlogs.scss";
 import { ToastContainer } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getAllPosts } from "../../context/ReducerFunctions";
 import { useDispatch } from "../../context/Store";
 
 const PersonalBlogs = () => {
@@ -25,7 +24,6 @@ const PersonalBlogs = () => {
       window.scrollTo(0, 0);
     }
 
-    getAllPosts(dispatch)
 
     return () => {
       sessionStorage.setItem("scrollPosition", window.scrollY);
