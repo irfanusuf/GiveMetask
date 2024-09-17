@@ -63,22 +63,33 @@ import {
 
 import "ckeditor5/ckeditor5.css";
 
-import "./Ckeditor.scss";
+import "./EditBlog.scss";
 import api from "../utils/AxiosInstance";
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch } from "../../context/Store";
+import { getPost } from "../../context/ReducerFunctions";
+import { useParams } from "react-router-dom";
 
-export default function App() {
+export default function EditBlog() {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
+
+  const {postId} = useParams()
+
+  const {state , dispatch} = useDispatch()   // this is a custome hook and i prefer this name 
+
+
+  
+
   const [isLayoutReady, setIsLayoutReady] = useState(false);
+
+
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
+  const [dbImage , setDbIMage] =useState("") 
   const [loading, setLoading] = useState(false);
 
-
-  const {dispatch} = useDispatch()
   const formData = new FormData();
 
   formData.append("title", title);
@@ -90,17 +101,18 @@ export default function App() {
     setContent(data);
   };
 
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      if (title === "") {
-        return toast.error("Title Required!");
-      }
-      const res = await api.post(`/post/createPost`, formData);
+    
+      const res = await api.put(`/post/edit/${postId}`, formData);
       dispatch({ type: "POST_DATA_RELOAD", payload: res.data.message});
       toast.success(res.data.message);
-      console.log(res);
+    
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -109,53 +121,32 @@ export default function App() {
     }
   };
 
+
+useEffect(()=>{
+    getPost(dispatch, postId)
+
+},[dispatch ,postId])
+
+
+
+useEffect(() => {
+   
+    if (state.post) {
+      setTitle(state.post.title || "");
+      setContent(state.post.content);
+      setDbIMage(state.post.imageUrl || "")
+     
+    }
+  }, [state.post ,isLayoutReady]); 
+
+
   useEffect(() => {
-    document.title = "ALGO ACADEMY | Write blogs";
+    document.title = "ALGO ACADEMY | Edit blog";
     setIsLayoutReady(true);
 
-    return () => setIsLayoutReady(false);
+    // return () => setIsLayoutReady(false);
   }, []);
 
-  // class MyUploadAdapter {
-  // 	constructor(loader) {
-  // 		this.loader = loader;
-  // 	}
-
-  // 	upload() {
-  // 		return this.loader.file
-  // 			.then(image => new Promise((resolve, reject) => {
-  // 				const formData = new FormData();
-  // 				formData.append('upload', image);
-
-  // 				// Use Axios to upload the image
-  // 				api.post('/post/upload/image', formData, {
-  // 					headers: {
-  // 						'Content-Type': 'multipart/form-data'
-  // 					}
-  // 				})
-  // 				.then(response => {
-  // 					// Resolve the promise with the URL of the uploaded image
-  // 					resolve({
-  // 						default: response.data.url // Assuming the server returns the image URL in the `url` field
-  // 					});
-  // 				})
-  // 				.catch(error => {
-  // 					reject(`Couldn't upload file: ${image.name}.`);
-  // 				});
-  // 			}));
-  // 	}
-
-  // 	abort() {
-  // 		// If the upload is aborted, we can cancel the Axios request if needed
-  // 	}
-  // }
-
-  // // Integrating the custom upload adapter into CKEditor
-  // function MyCustomUploadAdapterPlugin(editor) {
-  // 	editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-  // 		return new MyUploadAdapter(loader);
-  // 	};
-  // }
 
   function customPlugin(editor) {
     editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
@@ -377,7 +368,7 @@ export default function App() {
         },
       ],
     },
-    initialData: "<h2> Title Goes here ...</h2> ",
+    initialData: content,
 
     link: {
       addTargetToExternalLinks: true,
@@ -417,8 +408,18 @@ export default function App() {
       <ToastContainer />
 
       <div className="create-blog">
+
+
+    
+
+      <img src={dbImage} alt="db-image" style={{width : "200px"}}/>
+
+
         <form>
-          <h1>WriteBlogs </h1>
+
+          <h1>Edit Blog </h1>
+
+
           <input
             placeholder="Enter Your title "
             value={title}
@@ -436,18 +437,18 @@ export default function App() {
           />
         </form>
 
-        <div ref={editorContainerRef}>
-          <div ref={editorRef}>
-            {isLayoutReady && (
+        <div>
+          <div>
+           {isLayoutReady &&
               <CKEditor
                 editor={ClassicEditor}
                 config={editorConfig}
                 onChange={handleEditorChange}
-              />
-            )}
+              />}
+            
           </div>
         </div>
-
+    
         <button onClick={handleSubmit} disabled={loading}>
           {loading ? "upload..." : "upload"}
         </button>

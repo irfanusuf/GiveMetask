@@ -42,12 +42,10 @@ const SingleBlog = ({userid}) => {
 
 
 
-
-
   useEffect(() => {
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     fetchSingleBlog();
-  });
+  },[]);
 
   return (
     <>

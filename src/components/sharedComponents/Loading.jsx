@@ -6,7 +6,7 @@ const Loading = () => {
   return (
     <div className='loading'>
         
-       <img src={loader}/>
+       <img src={loader} alt='loader'/>
        </div>
   )
 }

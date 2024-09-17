@@ -1,44 +1,34 @@
 import React, { useEffect, useState } from "react";
 import "./SecureIndex.scss";
 import { useDispatch } from "../../context/Store";
-
-// import LiveVideo from "./LiveVideo";
-// import LiveClass from "./LiveClass";
 import AdminAuthorized from "../authorization/AdminAuthorization";
-import { getAllUsers } from "../../context/ReducerFunctions";
+import { deletePost, getAllUsers } from "../../context/ReducerFunctions";
+import { useNavigate } from "react-router-dom";
 
 const SecureIndex = () => {
-  const { state ,dispatch} = useDispatch();
-
+  const { state, dispatch } = useDispatch();
   const checkAuth = AdminAuthorized();
-
+  const navigate = useNavigate()
   const [isAdmin, setisadmin] = useState(false);
 
 
 
-
- 
-
   useEffect(() => {
     (async () => {
       const isAuth = await checkAuth();
-     setisadmin (isAuth)
+      console.log("isAuth :" + isAuth);
+      setisadmin(isAuth);
     })();
 
     document.title = "ALGO ACADEMY | admin panel";
   }, [checkAuth]);
 
-
-
-  useEffect(()=>{
-
-    if(isAdmin){
-      getAllUsers(dispatch)
+  
+  useEffect(() => {
+    if (isAdmin) {
+      getAllUsers(dispatch);
     }
-    
-    
-  },[dispatch])
-
+  }, [dispatch, isAdmin]);
 
   if (isAdmin) {
     return (
@@ -54,16 +44,18 @@ const SecureIndex = () => {
                 <th>Name </th>
                 <th>Email </th>
                 <th> Have Subscribed</th>
+                <th> Email verified</th>
                 <th> Forgot pass Requset </th>
               </tr>
             </thead>
 
             <tbody>
-              {state.users.map((user) => (
-                <tr key={user._id}>
-                  <td>{user.username} </td>
-                  <td>{user.email} </td>
+              {state.users.map(({_id, username , email , isEmailVerified}) => (
+                <tr key={_id}>
+                  <td>{username} </td>
+                  <td>{email} </td>
                   <td>false</td>
+                  <td>{isEmailVerified ? "true" : "false"} </td>
                   <td>false</td>
                 </tr>
               ))}
@@ -72,6 +64,10 @@ const SecureIndex = () => {
 
           <h1> All Posts </h1>
 
+
+        <button onClick={()=>{navigate("/admin/post")}}>
+          Add Post
+        </button>
           <table>
             <thead>
               <tr>
@@ -88,8 +84,8 @@ const SecureIndex = () => {
                     <td>{post.title} </td>
                     <td>{post.author} </td>
                     <td>
-                      <button>Edit</button>
-                      <button>Delete</button>
+                      <button onClick={()=>{navigate(`/admin/editPost/${post._id}`)}}>Edit</button>
+                      <button onClick={()=>{deletePost(dispatch,post._id)}}>Delete</button>
                     </td>
                   </tr>
                 ))}
@@ -97,7 +93,6 @@ const SecureIndex = () => {
           </table>
         </div>
 
-        {/* <LiveClass/> */}
       </>
     );
   } else {

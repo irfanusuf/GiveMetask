@@ -7,9 +7,6 @@ import { Provider } from "./context/Store";
 
 
 
- 
-
-
 const targetDiv = ReactDOM.createRoot(document.getElementById("root"));
 
 targetDiv.render(

@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+
+.main-container {
+	font-family: 'Lato';
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ck-content {
+	font-family: 'Lato';
+	line-height: 1.6;
+	word-break: break-word;
+}
+
+
+
+.create-blog {
+	width: 70%;
+	margin: auto;
+    z-index: -1;
+
+    >img{
+        border-radius: 20px;
+        margin-top: 20px;
+    }
+  
+	> form {
+        display: flex;
+        flex-direction: column;
+	  > input { 
+		margin-bottom: 20px;
+		padding: 5px 20px;
+		font-size: 22px;
+		width: 600px;
+	  }
+	}
+  
+	> button {
+	  background-color: orange;
+	  padding: 10px 30px;
+	  border: none;
+	  border-radius: 20px; 
+	  margin-top: 20px;
+      margin-bottom: 20px;
+	  color: black;
+	  font-size: 20px;
+	}
+  }
+  
+  
+  
+  @media only screen and (max-width : 600px) {
+	  
+  
+	  .create-blog {
+		  width: 90%;
+	  
+		  padding: 2%;
+		
+		  // > form { 
+		  
+		  // }
+		
+		  // > button {
+			
+		  // }
+		}
+		
+  }

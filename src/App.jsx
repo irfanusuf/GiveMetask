@@ -25,6 +25,7 @@ import LiveClass from "./components/user/LiveClass";
 import { useDispatch } from "./context/Store";
 import { getAllPosts, getUser } from "./context/ReducerFunctions";
 import LiveVideo from "./components/admin/LiveVideo";
+import EditBlog from "./components/pages/EditBlog";
 // import LiveClass from "./components/admin/LiveClass"
 
 
@@ -53,9 +54,12 @@ const App = () => {
 
   useEffect(() => {
    getUser(dispatch)
-   getAllPosts(dispatch)
-  
-  }, [change , dispatch]);
+ 
+  }, [change , dispatch ]);
+
+  useEffect(() => {
+    getAllPosts(dispatch)
+   }, [dispatch ,state.postDataRelaod]);
 
   return (
     <>
@@ -88,11 +92,13 @@ const App = () => {
               element={<Login setChange={setChange} change={change} />}
             />
             <Route path="/user/profile" element={<UserProfile />} />
-            <Route path="/user/liveClass" element={<LiveClass />} />
+            <Route path="/user/liveClass/:roomId" element={<LiveClass />} />
 
             {/* admin routes */}
             
             <Route path="/admin/post" element={<Ck />} />
+            <Route path="/admin/editPost/:postId" element={<EditBlog/>} />
+
             <Route path="/admin/class/:roomId" element={<LiveVideo/>} />
 
             <Route
