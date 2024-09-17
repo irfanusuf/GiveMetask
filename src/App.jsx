@@ -19,10 +19,12 @@ import SignUp from "./components/pages/SignUp";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/Contact";
 import UserProfile from "./components/user/UserProfile";
-import api from "./components/utils/AxiosInstance";
 import CompanyPolicy from "./components/pages/CompanyPolicy";
 import Ck from "./components/molecules/CkEditor";
 import LiveClass from "./components/user/LiveClass";
+import { useDispatch } from "./context/Store";
+import { getUser } from "./context/ReducerFunctions";
+import LiveVideo from "./components/admin/LiveVideo";
 // import LiveClass from "./components/admin/LiveClass"
 
 
@@ -43,35 +45,24 @@ async function delay(promise) {
 const App = () => {
 
   const [change, setChange] = useState(false);
-  const [user, setUser] = useState({
-    email : "",
-    id : "",
-    message : ""
-  });
+
+  const {state , dispatch} = useDispatch()
+
   const [showMenu, setShowMenu] = useState(false);
 
   function menuOpenClose() {
     setShowMenu(!showMenu);
   }
 
-  const getUserData = async () => {
-    try {
-      const res = await api.get(`/user/getUser`);
-      setUser(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    getUserData();
-  }, [change]);
+   getUser(dispatch)
+  }, [change , dispatch]);
 
   return (
     <>
       <BrowserRouter>
         <Navbar
-          user={user.email}
+          user={state.userData.email}
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           menuOpenClose={menuOpenClose}
@@ -85,7 +76,7 @@ const App = () => {
 
             <Route path="/" element={<Index />}/>
             <Route path="/blogs" element={<PersonalBlogs />} />
-            <Route path="/blogs/:_id" element={<SingleBlog userid ={user.id} />} />
+            <Route path="/blogs/:_id" element={<SingleBlog userid ={state.userData.id}/>} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/carrier" element={<Carriers />} />
             <Route path="/contact" element={<Contact />} />
@@ -103,13 +94,13 @@ const App = () => {
             {/* admin routes */}
             
             <Route path="/admin/post" element={<Ck />} />
-{/*             <Route path="/admin/class/:roomId" element={<LiveClass/>} /> */}
+            <Route path="/admin/class/:roomId" element={<LiveVideo/>} />
 
             <Route
               path="/admin/dashboard"
               element={
                 <Suspense fallback={<Loading />}>
-                  <SecureIndex user={user.email} />
+                  <SecureIndex />
                 </Suspense>
               }
             />

@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import Home from "../sharedComponents/Home";
 import "./PersonalBlogs.scss";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useNavigate, useLocation } from "react-router-dom";
-import api from "../utils/AxiosInstance";
+import { getAllPosts } from "../../context/ReducerFunctions";
+import { useDispatch } from "../../context/Store";
 
 const PersonalBlogs = () => {
-  const [posts, setPosts] = useState([]);
-
-  const [loading, setLoading] = useState(false);
-
+ 
   const navigate = useNavigate();
   const location = useLocation();
+  const {state , dispatch} = useDispatch()
 
-  const fetchBlogs = async () => {
-    try {
-      setLoading(true);
-
-      const res = await api.get("/post/getAll");
-      if (res.data.success === true) {
-        setPosts(res.data.posts);
-      } else {
-        toast.error(res.data.message);
-      }
-    } catch (error) {
-      setLoading(false);
-      toast.error(error.message);
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+ 
 
   useEffect(() => {
 
@@ -44,12 +25,12 @@ const PersonalBlogs = () => {
       window.scrollTo(0, 0);
     }
 
-    fetchBlogs();
+    getAllPosts(dispatch)
 
     return () => {
       sessionStorage.setItem("scrollPosition", window.scrollY);
     };
-  }, [location.pathname]);
+  }, [location.pathname , dispatch]);
 
   return (
     <>
@@ -69,8 +50,8 @@ const PersonalBlogs = () => {
         <h1> MAKE HABIT OF READING</h1>
 
         <div className="p-blogs">
-          {posts &&
-            posts.map((post) => (
+          {state.posts &&
+            state.posts.map((post) => (
               <div
                 className="blog"
                 onClick={() => {

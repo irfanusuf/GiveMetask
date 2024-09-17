@@ -2,7 +2,16 @@
 const initialState = {
     user: null,
     theme: 'dark',
-    userData : {}
+    loading : false,
+    error : null,
+    message : "",
+    userData : {
+      message : "",
+      email : "",
+      id : ""    
+    },
+    users : [],
+    posts : []
 };
 
 

@@ -1,31 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./SecureIndex.scss";
 // import LiveClass from "./LiveClass";
 import { useDispatch } from "../../context/Store";
+import { getAllUsers } from "../../context/ReducerFunctions";
 // import LiveVideo from "./LiveVideo";
 
 // import Authorized from "../authorization/Authorized";
 
 const SecureIndex = () => {
-
   const { state, dispatch } = useDispatch();
-  const { user, theme } = state;
 
- 
+  useEffect(() => {
+    getAllUsers(dispatch);
+  }, [dispatch]);
+
   // const checkAuth = Authorized();
-  const [userdata, setUserData] = useState({
-    name: "",
-    email: "",
-    hasSub: false,
-    forgotPassReq: false,
-  });
-
 
   return (
     <>
       <div className="admin-panel">
-       
-
+        Admin : {state.userData.email}
         <table>
           <thead>
             <tr>
@@ -37,16 +31,16 @@ const SecureIndex = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td>{userdata.name} </td>
-              <td>{userdata.email}</td>
-              <td>{userdata.hasSub}</td>
-              <td>{userdata.forgotPassReq}</td>
-            </tr>
+            {state.users.map((user) => (
+              <tr>
+                <td>{user.username} </td>
+                <td>{user.email} </td>
+                <td>false</td>
+                <td>false</td>
+              </tr>
+            ))}
           </tbody>
         </table>
-
-  
       </div>
       {/* <LiveClass/> */}
     </>
