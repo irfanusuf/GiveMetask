@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import api from "../utils/AxiosInstance"
 
-const Authorized = () => {
+const AdminAuthorized = () => {
   const navigate = useNavigate();
 
   const checkAuth = async () => {
@@ -12,12 +12,9 @@ const Authorized = () => {
         if (res.data.message === "tokenNotVerfied") {
           navigate("/login");
           return false;
-        } else if (res.data.message === "userverified!") {
+        } else if (res.data.message === "adminVerified!") {
           return true;
-        }else if (res.data.message === "adminVerified!") {
-          return false;
         }
-    
     
     } catch (error) {
       console.log(error);
@@ -29,4 +26,4 @@ const Authorized = () => {
   return checkAuth;
 };
 
-export default Authorized;
+export default AdminAuthorized;

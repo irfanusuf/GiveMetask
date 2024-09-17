@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+
 import api from "../components/utils/AxiosInstance";
 
 export const getUser = async (dispatch) => {
@@ -35,7 +35,7 @@ export const getAllPosts = async (dispatch) => {
   
       console.log(res.data);
       dispatch({ type: "ALL_POSTS_DATA", payload: res.data.posts });
-      toast.success(res.data.message)
+
     } catch (error) {
       dispatch({ type: "DATA_FAILURE", payload: error.message });
     }

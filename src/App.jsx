@@ -23,7 +23,7 @@ import CompanyPolicy from "./components/pages/CompanyPolicy";
 import Ck from "./components/molecules/CkEditor";
 import LiveClass from "./components/user/LiveClass";
 import { useDispatch } from "./context/Store";
-import { getAllPosts, getAllUsers, getUser } from "./context/ReducerFunctions";
+import { getAllPosts, getUser } from "./context/ReducerFunctions";
 import LiveVideo from "./components/admin/LiveVideo";
 // import LiveClass from "./components/admin/LiveClass"
 
@@ -54,7 +54,7 @@ const App = () => {
   useEffect(() => {
    getUser(dispatch)
    getAllPosts(dispatch)
-   getAllUsers(dispatch)
+  
   }, [change , dispatch]);
 
   return (
