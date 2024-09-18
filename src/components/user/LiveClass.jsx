@@ -13,7 +13,6 @@ const LiveClass = () => {
         <div className="live-comments">
           <h2>Live Comments</h2>
           <ul>
-            {/* Replace with dynamic comments */}
             <li>User1: This is great!</li>
             <li>User2: Loving the session!</li>
             <li>User3: Can you explain that again?</li>

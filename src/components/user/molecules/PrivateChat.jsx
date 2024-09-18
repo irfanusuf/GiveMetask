@@ -10,7 +10,7 @@ const PrivateChat = () => {
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      setMessages([...messages, { sender: "teacher", text: newMessage }]);
+      setMessages([...messages, { sender: "student", text: newMessage }]);
       setNewMessage("");
     }
   };

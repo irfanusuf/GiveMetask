@@ -22,10 +22,12 @@ import UserProfile from "./components/user/UserProfile";
 import CompanyPolicy from "./components/pages/CompanyPolicy";
 import Ck from "./components/molecules/CkEditor";
 import LiveClass from "./components/user/LiveClass";
+import LiveClass2 from "./components/user/LiveClass2";
 import { useDispatch } from "./context/Store";
 import { getAllPosts, getUser } from "./context/ReducerFunctions";
 import LiveVideo from "./components/admin/LiveVideo";
 import EditBlog from "./components/pages/EditBlog";
+import InteractPanel from "./components/user/InteractPanel";
 // import LiveClass from "./components/admin/LiveClass"
 
 
@@ -85,14 +87,14 @@ const App = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/company-policy" element={<CompanyPolicy />} />
-          
+            <Route path="/interaction" element={<InteractPanel />} />
 
             <Route
               path="/login"
               element={<Login setChange={setChange} change={change} />}
             />
             <Route path="/user/profile" element={<UserProfile />} />
-            <Route path="/user/liveClass/:roomId" element={<LiveClass />} />
+            <Route path="/user/class/:roomId" element={<LiveClass2 />} />
 
             {/* admin routes */}
             
